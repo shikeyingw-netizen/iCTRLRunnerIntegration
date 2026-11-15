@@ -323,7 +323,7 @@ actor RunnerCustomerServiceRuntime {
     }
 
     func pendingHumanTasks() async -> [TakeoverTask] {
-        takeover.pendingTasks()
+        await takeover.pendingTasks()
     }
 
     private func handle(_ task: QueuedTask) async throws -> [TaskEvent] {
