@@ -129,13 +129,18 @@ ipa: build
 		echo "   ✅ shim already present — skipping"; \
 		exit 0; \
 	fi; \
+	BIN="$$APP/$(RUNNER_BIN)"; \
+	if ! nm -u "$$BIN" | grep -q '_OBJC_CLASS_$$_XCTCommandLineToolHelper'; then \
+		echo "   runner does not reference XCTCommandLineToolHelper - compat shim not needed"; \
+		exit 0; \
+	fi; \
 	SDK="$$(xcrun --sdk iphoneos --show-sdk-path)"; \
 	mkdir -p "$$APP/Frameworks"; \
 	xcrun -sdk iphoneos clang -dynamiclib -arch arm64 -isysroot "$$SDK" \
 		-mios-version-min=16.0 -install_name "@rpath/libXCTCompatShim.dylib" \
 		-framework Foundation -o "$$APP/Frameworks/libXCTCompatShim.dylib" \
 		iCTRLCompat/XCTCompatShim.m; \
-	BIN="$$APP/$(RUNNER_BIN)"; TMP="$$BIN.patching"; \
+	TMP="$$BIN.patching"; \
 	cp "$$BIN" "$$TMP"; \
 	trap 'rm -f "$$TMP"' EXIT; \
 	python3 Scripts/insert-dylib.py "$$TMP" "@rpath/libXCTCompatShim.dylib"; \

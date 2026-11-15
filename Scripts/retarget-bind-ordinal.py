@@ -227,12 +227,8 @@ def main():
             off += cmdsize
 
     if not total:
-        # Xcode 16.4's prebuilt XCTRunner can retain the symbol in LC_SYMTAB
-        # without emitting a bind/fixup when the command-line-helper path is
-        # dead-stripped. The following retarget-undef-symbol.py step still
-        # validates the undefined symbol and the compat dylib.
-        print(f"   no bind record emitted for '{want_sym}' - nothing to retarget")
-        return 0
+        print(f"🔴 no bind record for '{want_sym}' needed changing", file=sys.stderr)
+        return 1
 
     with open(path, "wb") as fh:
         fh.write(buf)
