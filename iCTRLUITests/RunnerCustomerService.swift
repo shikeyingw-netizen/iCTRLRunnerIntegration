@@ -154,6 +154,23 @@ final class RunnerAppUIBridge: AppUIBridge, @unchecked Sendable {
         )
     }
 
+    func typeOnKeyboard(
+        text: String,
+        x: Double,
+        y: Double
+    ) async throws {
+        _ = try await dispatch(
+            "type",
+            [
+                "x": .double(x),
+                "y": .double(y),
+                "text": .string(text),
+                "clear": .bool(false),
+                "via": .string("keyboard"),
+            ]
+        )
+    }
+
     func wait(seconds: Double) async throws {
         guard seconds > 0 else {
             return
