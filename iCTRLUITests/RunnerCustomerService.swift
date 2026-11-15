@@ -1,7 +1,6 @@
 import AssistantCore
 import Foundation
 import Security
-import UIKit
 import UserNotifications
 
 enum RunnerCustomerServiceError: Error, CustomStringConvertible {
@@ -177,35 +176,14 @@ final class RunnerAppUIBridge: AppUIBridge, @unchecked Sendable {
         x: Double,
         y: Double
     ) async throws {
-        await MainActor.run {
-            UIPasteboard.general.string = text
-        }
         _ = try await dispatch(
-            "long_press",
+            "paste_text",
             [
                 "x": .double(x),
                 "y": .double(y),
-                "duration": .double(0.9),
+                "text": .string(text),
             ]
         )
-        try await wait(seconds: 0.3)
-        let page = try await foregroundPage()
-        guard let paste = page.snapshot.nodes
-            .filter({
-                ($0.kind == "Button" || $0.kind == "StaticText")
-                    && ($0.label == "粘贴" || $0.label == "Paste")
-            })
-            .min(by: {
-                if $0.y == $1.y {
-                    return $0.x < $1.x
-                }
-                return $0.y < $1.y
-            })
-        else {
-            throw RunnerCustomerServiceError.responseMissing("paste menu")
-        }
-        try await tap(x: paste.centerX, y: paste.centerY)
-        try await wait(seconds: 0.25)
     }
 
     func wait(seconds: Double) async throws {

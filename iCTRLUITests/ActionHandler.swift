@@ -1028,6 +1028,8 @@ class ActionHandler {
             return scroll(cmd)
         case "type":
             return typeText(cmd)
+        case "paste_text":
+            return pasteText(cmd)
         case "clear_text":
             return clearText(cmd)
         case "home":
@@ -1124,7 +1126,7 @@ class ActionHandler {
         "page", "page_down", "page_source", "page_up", "reset", "resolve_app",
         "screenshot", "scroll", "scroll_to", "scroll_to_element", "search_app",
         "search_apps", "snapshot_bench", "swipe", "tap", "tap_element",
-        "screen_text", "ocr", "terminate_app", "type", "ui_tree", "unlock", "view_tree", "wait",
+        "paste_text", "screen_text", "ocr", "terminate_app", "type", "ui_tree", "unlock", "view_tree", "wait",
     ]
 
     /// Unknown method → name the closest matches and point at /schema, so a caller
@@ -2288,6 +2290,67 @@ class ActionHandler {
                 : "Typing failed: no input field currently has keyboard focus. First tap the text field (pass x,y to this command, or call tap), wait for the keyboard, then type."
             return (nil, JSONRPCError(code: -32603, message: guidance, data: nil))
         }
+    }
+
+    private func pasteText(
+        _ cmd: ActionCommand
+    ) -> ([String: JSONValue]?, JSONRPCError?) {
+        guard let text = cmd.text, !text.isEmpty else {
+            return (
+                nil,
+                JSONRPCError(
+                    code: -32602,
+                    message: "paste_text requires non-empty text",
+                    data: nil
+                )
+            )
+        }
+        UIPasteboard.general.string = text
+        guard let bid = resolveForegroundBundleId() else {
+            return (nil, .serverError("No foreground app for paste_text"))
+        }
+        let target = XCUIApplication(bundleIdentifier: bid)
+        let types = [
+            XCUIElement.ElementType.textView,
+            .textField,
+            .searchField,
+        ].map(\.rawValue)
+        let element = target.descendants(matching: .any).matching(
+            NSPredicate(
+                format: "hasKeyboardFocus == true AND elementType IN %@",
+                types
+            )
+        ).firstMatch
+        guard element.safeExists else {
+            return (
+                nil,
+                .serverError(
+                    "paste_text found no focused text input in \(bid)"
+                )
+            )
+        }
+        var sent = false
+        let raised = ObjCException.catching {
+            element.typeKey("v", modifierFlags: .command)
+            sent = true
+        }
+        guard sent else {
+            return (
+                nil,
+                .serverError(
+                    "paste_text could not send Command-V: "
+                        + "\(raised ?? "unknown error")"
+                )
+            )
+        }
+        usleep(250_000)
+        return (
+            [
+                "message": .string("Pasted text into focused field"),
+                "characters": .int(text.count),
+            ],
+            nil
+        )
     }
 
     /// What the last tap landed on (its label), to find a field again after
