@@ -14,7 +14,7 @@ configFiles:
 packages:
   AssistantCore:
     url: https://github.com/shikeyingw-netizen/iPhoneAssistantCore.git
-    revision: e11e6932f932ad2e3b5bbde60cac8eb07555dcc3
+    revision: 52b2db0776ca7dffd152343104a1d40ca0594215
 
 settings:
   base:
