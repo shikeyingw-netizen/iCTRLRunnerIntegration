@@ -42,6 +42,10 @@ final class RunnerAppUIBridge: AppUIBridge, @unchecked Sendable {
         )
     }
 
+    func home() async throws {
+        _ = try await dispatch("home", [:])
+    }
+
     func snapshot(bundleID: String) async throws -> AccessibilitySnapshot {
         let result = try await dispatch(
             "page_source",
@@ -64,6 +68,35 @@ final class RunnerAppUIBridge: AppUIBridge, @unchecked Sendable {
             )
         }
         return AccessibilityTreeParser.parse(source, capturedAt: clock())
+    }
+
+    func foregroundPage() async throws -> RunnerForegroundPage {
+        let result = try await dispatch(
+            "page_source",
+            [
+                "max_elements": .int(5_000),
+                "max_children": .int(2_000),
+            ]
+        )
+        guard let source = result["source"]?.stringValue else {
+            throw RunnerCustomerServiceError.responseMissing("source")
+        }
+        guard let bundleID = result["bundle_id"]?.stringValue else {
+            throw RunnerCustomerServiceError.responseMissing("bundle_id")
+        }
+        return RunnerForegroundPage(
+            bundleID: bundleID,
+            snapshot: AccessibilityTreeParser.parse(
+                source,
+                capturedAt: clock()
+            )
+        )
+    }
+
+    func screenSignature() async throws -> [UInt8]? {
+        await MainActor.run {
+            ScreenSettle.sampleSignature()
+        }
     }
 
     func tap(x: Double, y: Double) async throws {
@@ -124,6 +157,11 @@ final class RunnerAppUIBridge: AppUIBridge, @unchecked Sendable {
             return result ?? [:]
         }
     }
+}
+
+struct RunnerForegroundPage: Sendable {
+    let bundleID: String
+    let snapshot: AccessibilitySnapshot
 }
 
 enum RunnerLocalKeychain {
@@ -235,6 +273,8 @@ actor RunnerCustomerServiceRuntime {
     private let scheduler: TaskScheduler
     private let takeover: ManualTakeoverCenter
     private let deepSeek: DeepSeekAppDriver
+    private var messageObserver: RunnerCommerceMessageObserver?
+    private var observedRoutes: [String: DetectedCommerceMessage] = [:]
     private var running = false
 
     init(bridge: RunnerAppUIBridge) throws {
@@ -279,11 +319,25 @@ actor RunnerCustomerServiceRuntime {
         let paused = await takeover.isAutomationPaused
         await scheduler.setAutomaticRepliesPaused(paused)
         running = true
+        let observer = RunnerCommerceMessageObserver(bridge: bridge)
+        messageObserver = observer
+        await observer.start { [weak self] message in
+            guard let self else {
+                return
+            }
+            try await self.ingestObservedMessage(message)
+        }
         return recovery
     }
 
     func stop() {
         running = false
+        if let observer = messageObserver {
+            Task {
+                await observer.stop()
+            }
+        }
+        messageObserver = nil
     }
 
     func enqueue(_ input: QueueTaskInput) async throws -> QueueEnqueueResult {
@@ -326,10 +380,94 @@ actor RunnerCustomerServiceRuntime {
         await takeover.pendingTasks()
     }
 
+    private func ingestObservedMessage(
+        _ message: DetectedCommerceMessage
+    ) async throws {
+        let assessment = MerchantPolicy.assess(message.text)
+        let payload = TaskPayload(
+            notificationKey: message.notificationKey,
+            customerName: message.customerName,
+            buyerQuestion: message.text,
+            conversation: [
+                QueueConversationMessage(
+                    side: .customer,
+                    text: message.text,
+                    observedAt: message.detectedAt
+                ),
+            ],
+            orderInfo: nil,
+            riskCategory: assessment.category,
+            aiReason: "Observed by \(message.source.rawValue)",
+            suggestedReply: assessment.safeHoldingReply ?? ""
+        )
+        let key = StableIdentifier.hexDigest(
+            "observed",
+            message.platform.rawValue,
+            normalizedIdentity(message.storeName),
+            normalizedIdentity(message.customerName),
+            normalizedIdentity(message.text),
+            message.notificationKey
+        )
+        let input = QueueTaskInput(
+            eventID: "observed-\(message.notificationKey.prefix(16))",
+            idempotencyKey: key,
+            platform: message.platform,
+            storeName: message.storeName,
+            payload: payload,
+            priority: assessment.requiresHumanReview ? .high : .normal,
+            availableAt: Date(),
+            createdAt: message.detectedAt
+        )
+        let result = try await queue.enqueue(input)
+        switch result {
+        case let .inserted(task):
+            observedRoutes[task.idempotencyKey] = message
+            iCTRLUITests.logBuffer.append(
+                "Commerce task queued: "
+                    + "task=\(task.id.uuidString.prefix(8)) "
+                    + "platform=\(task.platform.rawValue) "
+                    + "source=\(message.source.rawValue) "
+                    + "detected_to_queue_ms="
+                    + "\(Int(Date().timeIntervalSince(message.detectedAt) * 1000))"
+            )
+            _ = try await scheduler.processAvailable(
+                maximumTasks: 1,
+                leaseDuration: 90,
+                handler: { task in
+                    try await self.handle(task)
+                }
+            )
+            observedRoutes.removeValue(forKey: task.idempotencyKey)
+        case let .duplicate(task):
+            iCTRLUITests.logBuffer.append(
+                "Commerce duplicate ignored: "
+                    + "task=\(task.id.uuidString.prefix(8)) "
+                    + "source=\(message.source.rawValue)"
+            )
+        }
+    }
+
+    private func normalizedIdentity(_ text: String) -> String {
+        text.replacingOccurrences(
+            of: #"\s+"#,
+            with: " ",
+            options: .regularExpression
+        )
+        .trimmingCharacters(in: .whitespacesAndNewlines)
+        .lowercased()
+    }
+
     private func handle(_ task: QueuedTask) async throws -> [TaskEvent] {
         guard running else {
             return [.escalateToHuman]
         }
+        let processingStartedAt = Date()
+        iCTRLUITests.logBuffer.append(
+            "Commerce task processing started: "
+                + "task=\(task.id.uuidString.prefix(8)) "
+                + "detected_to_start_ms="
+                + "\(Int(processingStartedAt.timeIntervalSince(task.createdAt) * 1000))"
+        )
 
         let assessment = MerchantPolicy.assess(
             task.payload.buyerQuestion
@@ -345,9 +483,21 @@ actor RunnerCustomerServiceRuntime {
                     ? "Message requires human verification"
                     : reason
             )
+            try? await bridge.home()
             return [.startProcessing, .escalateToHuman]
         }
 
+        do {
+            try await routeToVerifiedConversation(task)
+        } catch {
+            await submitTakeoverTask(
+                task,
+                assessment: assessment,
+                reason: "Could not verify and open the matching conversation automatically"
+            )
+            try? await bridge.home()
+            return [.startProcessing, .escalateToHuman]
+        }
         let conversation = ConversationContext(
             platform: task.platform,
             storeName: task.storeName,
@@ -380,6 +530,7 @@ actor RunnerCustomerServiceRuntime {
                     reason: turn.failureReason
                         ?? "DeepSeek App did not produce a reply"
                 )
+                try? await bridge.home()
                 return [.startProcessing, .escalateToHuman]
             }
             generated = turn.answer
@@ -398,15 +549,26 @@ actor RunnerCustomerServiceRuntime {
                         .map(\.rawValue)
                         .joined(separator: ", ")
             )
+            try? await bridge.home()
             return [.startProcessing, .escalateToHuman]
         }
 
         let receipt = try await send(
             quality.normalizedReply,
-            platform: task.platform
+            task: task
         )
         switch receipt {
         case .sentVerified:
+            let sentAt = Date()
+            iCTRLUITests.logBuffer.append(
+                "Commerce reply sent: "
+                    + "task=\(task.id.uuidString.prefix(8)) "
+                    + "start_to_sent_ms="
+                    + "\(Int(sentAt.timeIntervalSince(processingStartedAt) * 1000)) "
+                    + "detected_to_sent_ms="
+                    + "\(Int(sentAt.timeIntervalSince(task.createdAt) * 1000))"
+            )
+            try? await bridge.home()
             return [
                 .startProcessing,
                 .generateReply,
@@ -419,6 +581,7 @@ actor RunnerCustomerServiceRuntime {
                 assessment: assessment,
                 reason: "Send result is uncertain: \(reason)"
             )
+            try? await bridge.home()
             return [
                 .startProcessing,
                 .generateReply,
@@ -430,15 +593,16 @@ actor RunnerCustomerServiceRuntime {
 
     private func send(
         _ reply: String,
-        platform: CommercePlatform
+        task: QueuedTask
     ) async throws -> RunnerSendReceipt {
-        switch platform {
+        switch task.platform {
         case .pinduoduo:
             try await bridge.launch(bundleID: PinduoduoDriver.bundleID)
             let driver = PinduoduoDriver(bridge: bridge)
             guard case .directChat = try await driver.inspect() else {
                 throw RunnerCustomerServiceError.unsupportedSurface
             }
+            try await verifyDirectChat(task)
             try await driver.prepareReply(reply)
             switch try await driver.sendPreparedReply(reply) {
             case .sentVerified:
@@ -452,6 +616,7 @@ actor RunnerCustomerServiceRuntime {
             guard case .directChat = try await driver.inspect() else {
                 throw RunnerCustomerServiceError.unsupportedSurface
             }
+            try await verifyDirectChat(task)
             try await driver.prepareReply(reply)
             switch try await driver.sendPreparedReply(reply) {
             case .sentVerified:
@@ -459,6 +624,115 @@ actor RunnerCustomerServiceRuntime {
             case let .sendUncertain(reason):
                 return .sendUncertain(reason: reason)
             }
+        }
+    }
+
+    private func routeToVerifiedConversation(
+        _ task: QueuedTask
+    ) async throws {
+        if let route = observedRoutes[task.idempotencyKey],
+           route.source == .notificationCenter,
+           let x = route.actionX,
+           let y = route.actionY {
+            try await bridge.tap(x: x, y: y)
+            try await bridge.wait(seconds: 0.7)
+            if try await openDetectedConversation(task) {
+                return
+            }
+        }
+
+        try await bridge.launch(bundleID: bundleID(for: task.platform))
+        try await bridge.wait(seconds: 0.5)
+        if try await openDetectedConversation(task) {
+            return
+        }
+        throw RunnerCustomerServiceError.unsupportedSurface
+    }
+
+    private func openDetectedConversation(
+        _ task: QueuedTask
+    ) async throws -> Bool {
+        let page = try await bridge.foregroundPage()
+        guard page.bundleID == bundleID(for: task.platform) else {
+            return false
+        }
+        var messages = CommerceMessageDetector.parse(
+            bundleID: page.bundleID,
+            snapshot: page.snapshot
+        )
+        if messages.contains(where: {
+            $0.source == .directChat && matches(task, $0)
+        }) {
+            return true
+        }
+
+        guard let target = messages.first(where: {
+            $0.source != .directChat
+                && $0.actionX != nil
+                && $0.actionY != nil
+                && matches(task, $0)
+        }), let x = target.actionX, let y = target.actionY else {
+            return false
+        }
+        try await bridge.tap(x: x, y: y)
+        try await bridge.wait(seconds: 0.7)
+        let opened = try await bridge.foregroundPage()
+        messages = CommerceMessageDetector.parse(
+            bundleID: opened.bundleID,
+            snapshot: opened.snapshot
+        )
+        return messages.contains {
+            $0.source == .directChat && matches(task, $0)
+        }
+    }
+
+    private func verifyDirectChat(_ task: QueuedTask) async throws {
+        let page = try await bridge.foregroundPage()
+        guard page.bundleID == bundleID(for: task.platform) else {
+            throw RunnerCustomerServiceError.wrongForegroundApp(
+                expected: bundleID(for: task.platform),
+                actual: page.bundleID
+            )
+        }
+        let messages = CommerceMessageDetector.parse(
+            bundleID: page.bundleID,
+            snapshot: page.snapshot
+        )
+        guard messages.contains(where: {
+            $0.source == .directChat && matches(task, $0)
+        }) else {
+            throw RunnerCustomerServiceError.unsupportedSurface
+        }
+    }
+
+    private func matches(
+        _ task: QueuedTask,
+        _ observed: DetectedCommerceMessage
+    ) -> Bool {
+        let expected = normalizedIdentity(task.payload.buyerQuestion)
+        let actual = normalizedIdentity(observed.text)
+        let textMatches = expected == actual
+            || expected.contains(actual)
+            || actual.contains(expected)
+        let customerExpected = normalizedIdentity(
+            task.payload.customerName
+        )
+        let customerActual = normalizedIdentity(observed.customerName)
+        let customerMatches = customerExpected.isEmpty
+            || customerExpected.contains("待核实")
+            || customerActual.contains("待核实")
+            || customerExpected == customerActual
+        return textMatches && customerMatches
+    }
+
+    private func bundleID(
+        for platform: CommercePlatform
+    ) -> String {
+        switch platform {
+        case .pinduoduo:
+            return PinduoduoDriver.bundleID
+        case .qianniu:
+            return QianniuDriver.bundleID
         }
     }
 

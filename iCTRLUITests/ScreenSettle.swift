@@ -100,6 +100,47 @@ enum ScreenSettle {
         iCTRLUITests.captureFrame().flatMap(frame(from:))
     }
 
+    /// A transportable snapshot of the same coarse frame used by the
+    /// settle detector. The customer-service observer captures this on the
+    /// main thread, then compares it on its own actor without touching UI.
+    static func sampleSignature() -> [UInt8]? {
+        sample()?.px
+    }
+
+    /// Share of cells that changed between two signatures. The status bar is
+    /// excluded because its clock and network indicators change by themselves.
+    static func changedShare(
+        _ previous: [UInt8],
+        _ current: [UInt8]
+    ) -> Double {
+        guard previous.count == current.count,
+              previous.count == gridW * gridH * 4
+        else {
+            return 1
+        }
+        let first = skipTopRows * gridW
+        let count = gridW * gridH
+        var changed = 0
+        for cell in first..<count {
+            let offset = cell * 4
+            let differs =
+                abs(Int16(previous[offset]) - Int16(current[offset]))
+                    > pixelDelta
+                || abs(
+                    Int16(previous[offset + 1])
+                        - Int16(current[offset + 1])
+                ) > pixelDelta
+                || abs(
+                    Int16(previous[offset + 2])
+                        - Int16(current[offset + 2])
+                ) > pixelDelta
+            if differs {
+                changed += 1
+            }
+        }
+        return Double(changed) / Double(count - first)
+    }
+
     /// The same downscale from an image already in hand — a read that took a
     /// screenshot anyway shouldn't pay for a second capture.
     static func frame(from image: UIImage) -> Frame? {
