@@ -1,0 +1,71 @@
+name: Official iCTRL Runner Build
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-15-intel
+    timeout-minutes: 60
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: |
+          xcodebuild -version
+          swift --version
+          python3 --version
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Build unmodified official IPAs
+        shell: bash
+        run: |
+          set +e
+          make ipa UNSIGNED=1 2>&1 | tee official-runner-build.log
+          status=${PIPESTATUS[0]}
+          {
+            echo "## Official iCTRL Runner build"
+            echo
+            echo "Exit code: ${status}"
+            echo
+            echo '```text'
+            tail -n 500 official-runner-build.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit "${status}"
+
+      - name: Record package hashes
+        if: success()
+        shell: bash
+        run: |
+          shasum -a 256 \
+            iCTRLUITests-Runner.ipa \
+            iCTRL.ipa \
+            | tee SHA256SUMS.txt
+
+      - name: Upload official Runner IPA
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-iCTRLUITests-Runner-unsigned
+          path: |
+            iCTRLUITests-Runner.ipa
+            SHA256SUMS.txt
+
+      - name: Upload companion IPA and build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-iCTRL-build-evidence
+          path: |
+            iCTRL.ipa
+            official-runner-build.log
+          if-no-files-found: ignore
