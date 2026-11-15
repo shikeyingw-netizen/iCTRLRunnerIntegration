@@ -68,10 +68,24 @@ actor RunnerCommerceMessageObserver {
                 if canRead && (changed || firstRead || compensationDue) {
                     let page = try await bridge.foregroundPage()
                     lastForegroundBundleID = page.bundleID
-                    let messages = CommerceMessageDetector.parse(
+                    var messages = CommerceMessageDetector.parse(
                         bundleID: page.bundleID,
                         snapshot: page.snapshot
                     )
+                    if messages.isEmpty,
+                       page.bundleID == "com.apple.springboard" {
+                        let items = try await bridge.visibleTextItems()
+                        messages = CommerceBannerTextParser.parse(
+                            items,
+                            capturedAt: Date()
+                        )
+                        if !messages.isEmpty {
+                            iCTRLUITests.logBuffer.append(
+                                "Commerce banner OCR recovered "
+                                    + "\(messages.count) visible notification(s)"
+                            )
+                        }
+                    }
                     for message in messages {
                         guard !recentlyDetected(message.notificationKey)
                         else {

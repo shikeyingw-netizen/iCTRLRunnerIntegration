@@ -99,6 +99,32 @@ final class RunnerAppUIBridge: AppUIBridge, @unchecked Sendable {
         }
     }
 
+    func visibleTextItems() async throws -> [VisibleTextItem] {
+        let result = try await dispatch("screen_text", [:])
+        guard case let .array(rawItems)? = result["items"] else {
+            throw RunnerCustomerServiceError.responseMissing("items")
+        }
+        return rawItems.compactMap { raw in
+            guard case let .object(item) = raw,
+                  let label = item["label"]?.stringValue,
+                  let x = item["x"]?.doubleValue,
+                  let y = item["y"]?.doubleValue,
+                  let width = item["width"]?.doubleValue,
+                  let height = item["height"]?.doubleValue
+            else {
+                return nil
+            }
+            return VisibleTextItem(
+                label: label,
+                x: x,
+                y: y,
+                width: width,
+                height: height,
+                confidence: item["confidence"]?.doubleValue ?? 1
+            )
+        }
+    }
+
     func tap(x: Double, y: Double) async throws {
         _ = try await dispatch(
             "tap",
