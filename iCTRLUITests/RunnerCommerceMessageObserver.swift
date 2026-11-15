@@ -6,6 +6,7 @@ actor RunnerCommerceMessageObserver {
     private var loopTask: Task<Void, Never>?
     private var running = false
     private var lastSignature: [UInt8]?
+    private var lastForegroundBundleID: String?
     private var lastPageReadAt = Date.distantPast
     private var nextCompensationReadAt = Date()
     private var compensationInterval: TimeInterval = 3
@@ -47,10 +48,14 @@ actor RunnerCommerceMessageObserver {
                 let now = Date()
                 let changed: Bool
                 if let signature, let lastSignature {
+                    let changeThreshold =
+                        lastForegroundBundleID == "com.apple.springboard"
+                            ? 0.08
+                            : 0.03
                     changed = ScreenSettle.changedShare(
                         lastSignature,
                         signature
-                    ) >= 0.015
+                    ) >= changeThreshold
                 } else {
                     changed = false
                 }
@@ -59,6 +64,7 @@ actor RunnerCommerceMessageObserver {
                 let canRead = now.timeIntervalSince(lastPageReadAt) >= 0.5
                 if canRead && (changed || firstRead || compensationDue) {
                     let page = try await bridge.foregroundPage()
+                    lastForegroundBundleID = page.bundleID
                     let messages = CommerceMessageDetector.parse(
                         bundleID: page.bundleID,
                         snapshot: page.snapshot
