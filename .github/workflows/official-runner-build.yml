@@ -80,9 +80,13 @@ jobs:
             echo "Run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
             echo "Commit: ${GITHUB_SHA}"
             echo
+            echo "## Matched diagnostics"
             grep -nE 'error:|fatal error:|failed|❌|warning:' official-runner-build.log \
               | tail -n 600 \
               || true
+            echo
+            echo "## Complete log tail"
+            tail -n 800 official-runner-build.log || true
           } > "${report}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
