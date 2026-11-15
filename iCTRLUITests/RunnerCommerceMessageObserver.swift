@@ -48,14 +48,17 @@ actor RunnerCommerceMessageObserver {
                 let now = Date()
                 let changed: Bool
                 if let signature, let lastSignature {
-                    let changeThreshold =
-                        lastForegroundBundleID == "com.apple.springboard"
-                            ? 0.08
-                            : 0.03
-                    changed = ScreenSettle.changedShare(
-                        lastSignature,
-                        signature
-                    ) >= changeThreshold
+                    if lastForegroundBundleID == "com.apple.springboard" {
+                        changed = ScreenSettle.bannerAreaChangedShare(
+                            lastSignature,
+                            signature
+                        ) >= 0.05
+                    } else {
+                        changed = ScreenSettle.changedShare(
+                            lastSignature,
+                            signature
+                        ) >= 0.03
+                    }
                 } else {
                     changed = false
                 }

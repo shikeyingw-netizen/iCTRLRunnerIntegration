@@ -141,6 +141,43 @@ enum ScreenSettle {
         return Double(changed) / Double(count - first)
     }
 
+    /// Only the top band where a home-screen notification banner can appear.
+    /// Home-screen widgets and icons below it may animate continuously and must
+    /// not be mistaken for an incoming message.
+    static func bannerAreaChangedShare(
+        _ previous: [UInt8],
+        _ current: [UInt8]
+    ) -> Double {
+        guard previous.count == current.count,
+              previous.count == gridW * gridH * 4
+        else {
+            return 1
+        }
+        let firstRow = skipTopRows
+        let endRow = min(gridH, 26)
+        let first = firstRow * gridW
+        let count = endRow * gridW
+        var changed = 0
+        for cell in first..<count {
+            let offset = cell * 4
+            let differs =
+                abs(Int16(previous[offset]) - Int16(current[offset]))
+                    > pixelDelta
+                || abs(
+                    Int16(previous[offset + 1])
+                        - Int16(current[offset + 1])
+                ) > pixelDelta
+                || abs(
+                    Int16(previous[offset + 2])
+                        - Int16(current[offset + 2])
+                ) > pixelDelta
+            if differs {
+                changed += 1
+            }
+        }
+        return Double(changed) / Double(count - first)
+    }
+
     /// The same downscale from an image already in hand — a read that took a
     /// screenshot anyway shouldn't pay for a second capture.
     static func frame(from image: UIImage) -> Frame? {
