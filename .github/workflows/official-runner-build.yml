@@ -1,4 +1,4 @@
-name: Official iCTRL Runner Build
+name: Integrated iCTRL Runner Build
 
 on:
   push:
@@ -25,19 +25,19 @@ jobs:
       - name: Install XcodeGen
         run: brew install xcodegen
 
-      - name: Build unmodified official IPAs
+      - name: Build integrated Runner IPA
         shell: bash
         run: |
           set +e
-          make ipa UNSIGNED=1 2>&1 | tee official-runner-build.log
+          make ipa UNSIGNED=1 2>&1 | tee integrated-runner-build.log
           status=${PIPESTATUS[0]}
           {
-            echo "## Official iCTRL Runner build"
+            echo "## Integrated iCTRL Runner build"
             echo
             echo "Exit code: ${status}"
             echo
             echo '```text'
-            tail -n 500 official-runner-build.log
+            tail -n 500 integrated-runner-build.log
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
           exit "${status}"
@@ -55,7 +55,7 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: official-iCTRLUITests-Runner-unsigned
+          name: integrated-iCTRLUITests-Runner-unsigned
           path: |
             iCTRLUITests-Runner.ipa
             SHA256SUMS.txt
@@ -64,10 +64,10 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: official-iCTRL-build-evidence
+          name: integrated-iCTRL-build-evidence
           path: |
             iCTRL.ipa
-            official-runner-build.log
+            integrated-runner-build.log
           if-no-files-found: ignore
 
       - name: Publish build failure report
@@ -81,12 +81,12 @@ jobs:
             echo "Commit: ${GITHUB_SHA}"
             echo
             echo "## Matched diagnostics"
-            grep -nE 'error:|fatal error:|failed|❌|warning:' official-runner-build.log \
+            grep -nE 'error:|fatal error:|failed|❌|warning:' integrated-runner-build.log \
               | tail -n 600 \
               || true
             echo
             echo "## Complete log tail"
-            tail -n 800 official-runner-build.log || true
+            tail -n 800 integrated-runner-build.log || true
           } > "${report}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

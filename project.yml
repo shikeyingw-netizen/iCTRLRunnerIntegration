@@ -11,6 +11,11 @@ configFiles:
   Debug: Config/Signing.xcconfig
   Release: Config/Signing.xcconfig
 
+packages:
+  AssistantCore:
+    url: https://github.com/shikeyingw-netizen/iPhoneAssistantCore.git
+    revision: 1bad2b24d258b6471de4a585c80783ac8dc806ea
+
 settings:
   base:
     SWIFT_VERSION: "5.0"
@@ -76,6 +81,8 @@ targets:
         buildPhase: resources
     dependencies:
       - target: iCTRL
+      - package: AssistantCore
+        product: AssistantCore
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: "$(ICTRL_BUNDLE_PREFIX).ictrl.uitests"

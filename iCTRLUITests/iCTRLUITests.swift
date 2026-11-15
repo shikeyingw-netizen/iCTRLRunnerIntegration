@@ -7,6 +7,7 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
     private var server: JSONRPCServer?
     private var app: XCUIApplication!
     private var actionHandler: ActionHandler?
+    private var customerServiceRuntime: RunnerCustomerServiceRuntime?
     private var pendingAuthCompletions: [String: (Bool) -> Void] = [:]
     /// Notification id of the pairing request awaiting an answer (at most one).
     private var currentAuthRequestID: String?
@@ -360,7 +361,40 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
         Self.logBuffer.append("🚪 tearDownWithError — test ending, stopping server. keepRunning=\(keepRunning)")
         server?.stop()
         server = nil
+        customerServiceRuntime = nil
         actionHandler = nil
+    }
+
+    private func startCustomerServiceRuntime() {
+        guard let actionHandler else {
+            return
+        }
+        do {
+            let runtime = try RunnerCustomerServiceRuntime(
+                bridge: RunnerAppUIBridge(handler: actionHandler)
+            )
+            customerServiceRuntime = runtime
+            Task {
+                do {
+                    let recovery = try await runtime.start()
+                    Self.logBuffer.append(
+                        "Customer-service runtime started; recovered "
+                            + "\(recovery.movedToManualReview) manual-review and "
+                            + "\(recovery.markedSendUncertain) send-uncertain tasks"
+                    )
+                } catch {
+                    Self.logBuffer.append(
+                        "Customer-service runtime disabled: "
+                            + String(describing: error)
+                    )
+                }
+            }
+        } catch {
+            Self.logBuffer.append(
+                "Customer-service runtime initialization failed: "
+                    + String(describing: error)
+            )
+        }
     }
 
     func testStartServer() throws {
@@ -406,6 +440,7 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
         }
 
         actionHandler = ActionHandler(app: app)
+        startCustomerServiceRuntime()
 
         // Restore persisted preferences (fresh install → local only, port 8200)
         remoteAccessEnabled = Self.persistedRemoteAccess
