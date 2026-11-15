@@ -1,0 +1,874 @@
+Run: https://github.com/shikeyingw-netizen/iCTRLRunnerIntegration/actions/runs/43735384804
+Commit: 1277a394ac6c8b466810a778e266c03ee59dacfd
+
+## Matched diagnostics
+321:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+324:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+327:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+333:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+379:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:218:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+385:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:219:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+391:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+394:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+397:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+403:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+413:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:218:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+419:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:219:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+425:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+428:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+431:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+437:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+447:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:218:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+453:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:219:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+459:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+462:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+465:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+471:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+481:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:218:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+487:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:219:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+493:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+496:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+499:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+505:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+515:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:218:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+521:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:219:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+527:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+530:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+533:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+539:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+549:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:218:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+555:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:219:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+561:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+564:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+567:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+573:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+583:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:218:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+589:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:219:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+595:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+598:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+601:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+607:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+617:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:218:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+623:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:219:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+629:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+632:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+635:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+641:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+651:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:218:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+657:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:219:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+663:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+666:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+669:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+675:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+681:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DeveloperDiskImageStore.swift:60:52: warning: main actor-isolated static property 'mirrorBase' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+711:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/JSONRPCServer.swift:988:9: warning: switch must be exhaustive
+725:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/LocalDevVPN.swift:56:18: warning: concurrently-executed local function 'finish' must be marked as '@Sendable'; this is an error in the Swift 6 language mode
+729:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/LocalDevVPN.swift:50:20: warning: expression is 'async' but is not marked with 'await'; this is an error in the Swift 6 language mode
+736:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/LocalDevVPN.swift:51:26: warning: expression is 'async' but is not marked with 'await'; this is an error in the Swift 6 language mode
+743:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/LocalDevVPN.swift:88:34: warning: expression is 'async' but is not marked with 'await'; this is an error in the Swift 6 language mode
+747:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/LocalDevVPN.swift:88:62: warning: expression is 'async' but is not marked with 'await'; this is an error in the Swift 6 language mode
+891:/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/CommerceMessageDetector.swift:692:47: error: value of tuple type '(x: Double, y: Double, text: String)' has no member 'label'
+978:warning: Run script build phase 'Strip unnecessary XCTest frameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'iCTRLUITests' from project 'iCTRL')
+982:The following build commands failed:
+
+## Complete log tail
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore.LinkFileList
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore-OutputFileMap.json (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore-OutputFileMap.json
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/AssistantCore.modulemap (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/AssistantCore.modulemap
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/AssistantCore.DependencyStaticMetadataFileList (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/AssistantCore.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/AssistantCore.DependencyMetadataFileList (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/AssistantCore.DependencyMetadataFileList
+
+MkDir /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/iCTRLUITests-Runner.app/PlugIns/iCTRLUITests.xctest (in target 'iCTRLUITests' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    /bin/mkdir -p /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/iCTRLUITests-Runner.app/PlugIns/iCTRLUITests.xctest
+
+ProcessXCFramework /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/Frameworks/IDevice.xcframework /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/libidevice_ffi.a ios
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    builtin-process-xcframework --xcframework /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/Frameworks/IDevice.xcframework --platform ios --target-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos
+
+Copy /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/GeneratedModuleMaps-iphoneos/AssistantCore.modulemap /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/AssistantCore.modulemap (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/AssistantCore.modulemap /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/GeneratedModuleMaps-iphoneos
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL.hmap (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL.hmap
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-all-target-headers.hmap (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-all-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL.DependencyStaticMetadataFileList (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL.DependencyMetadataFileList (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL.DependencyMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-project-headers.hmap (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-project-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-own-target-headers.hmap (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-own-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-generated-files.hmap (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-generated-files.hmap
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-all-non-framework-target-headers.hmap (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-all-non-framework-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-DebugDylibPath-normal-arm64.txt (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-DebugDylibPath-normal-arm64.txt
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-DebugDylibInstallName-normal-arm64.txt (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-DebugDylibInstallName-normal-arm64.txt
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL_const_extract_protocols.json (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL_const_extract_protocols.json
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.SwiftFileList (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.SwiftFileList
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.SwiftConstValuesFileList (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.SwiftConstValuesFileList
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.LinkFileList (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.LinkFileList
+
+WriteAuxiliaryFile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL-OutputFileMap.json (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    write-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL-OutputFileMap.json
+
+MkDir /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/iCTRL.app (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    /bin/mkdir -p /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/iCTRL.app
+
+Ld /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/iCTRL.app/__preview.dylib normal (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios16.0 -dynamiclib -isysroot /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -O0 -L/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos -F/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos -FFrameworks -install_name @rpath/iCTRL.debug.dylib -dead_strip -rdynamic -Xlinker -no_deduplicate -Xlinker -dependency_info -Xlinker /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL_dependency_info.dat -o /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/iCTRL.app/__preview.dylib
+
+MkDir /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/assetcatalog_output/unthinned (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    /bin/mkdir -p /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/assetcatalog_output/unthinned
+
+MkDir /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/assetcatalog_output/thinned (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    /bin/mkdir -p /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/assetcatalog_output/thinned
+
+GenerateAssetSymbols /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Assets.xcassets (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Assets.xcassets --compile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/iCTRL.app --output-format human-readable-text --notices --warnings --export-dependency-info /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/assetcatalog_dependencies --output-partial-info-plist /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/assetcatalog_generated_info.plist --app-icon AppIcon --compress-pngs --enable-on-demand-resources YES --development-region en --target-device iphone --target-device ipad --minimum-deployment-target 16.0 --platform iphoneos --bundle-identifier com.openminis.ictrl --generate-swift-asset-symbol-extensions NO --generate-swift-asset-symbols /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources/GeneratedAssetSymbols.swift --generate-objc-asset-symbols /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources/GeneratedAssetSymbols.h --generate-asset-symbol-index /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/* com.apple.actool.compilation-results */
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources/GeneratedAssetSymbols.h
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources/GeneratedAssetSymbols.swift
+
+
+CompileAssetCatalogVariant thinned /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/iCTRL.app /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Assets.xcassets (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Assets.xcassets --compile /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/assetcatalog_output/thinned --output-format human-readable-text --notices --warnings --export-dependency-info /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/assetcatalog_dependencies_thinned --output-partial-info-plist /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/assetcatalog_generated_info.plist_thinned --app-icon AppIcon --compress-pngs --enable-on-demand-resources YES --development-region en --target-device iphone --target-device ipad --minimum-deployment-target 16.0 --platform iphoneos
+
+SwiftDriver iCTRL normal arm64 com.apple.xcode.tools.swift.compiler (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    builtin-SwiftDriver -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name iCTRL -Onone -enforce-exclusivity\=checked @/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -target arm64-apple-ios16.0 -g -module-cache-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Index.noindex/DataStore -swift-version 5 -I /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos -F /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos -F Frameworks -c -j4 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -output-file-map /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-generated-files.hmap -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-own-target-headers.hmap -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL-e065b9312411c0ad7f6632fcab252f6b-VFS-iphoneos/all-product-headers.yaml -Xcc -iquote -Xcc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-project-headers.hmap -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/include -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL-Swift.h -working-directory /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration -experimental-emit-module-separately -disable-cmo
+
+SwiftDriver AssistantCore normal arm64 com.apple.xcode.tools.swift.compiler (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    builtin-SwiftDriver -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name AssistantCore -Onone -enforce-exclusivity\=checked @/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore.SwiftFileList -DSWIFT_PACKAGE -DDEBUG -DXcode -plugin-path /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -target arm64-apple-ios16.0 -g -module-cache-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -suppress-warnings -index-store-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Index.noindex/DataStore -swift-version 5 -I /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos -I /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos -F /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -F /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk/Developer/Library/Frameworks -c -j4 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -output-file-map /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/ModuleCache.noindex/Session.modulevalidation -package-name iphoneassistantcore -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore_const_extract_protocols.json -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/include -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore-Swift.h -working-directory /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj -experimental-emit-module-separately -disable-cmo
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ iCTRL (in target 'iCTRL' from project 'iCTRL')
+
+EmitSwiftModule normal arm64 (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+        try withUnsafePointer(to: &addr) { ptr in
+            ^                ~~~~~~~~~~~~~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+        try image.withUnsafeBytes { img in
+                  ^               ~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else {
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+
+SwiftCompile normal arm64 Compiling\ RunnerClient.swift,\ RunnerStatus.swift,\ SecureEnvelope.swift,\ SessionListView.swift,\ SettingsView.swift,\ TokenFileStore.swift,\ iCTRLApp.swift,\ GeneratedAssetSymbols.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Models/RunnerClient.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Models/RunnerStatus.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/SecureEnvelope.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Views/SessionListView.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Views/SettingsView.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/TokenFileStore.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/iCTRLApp.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'iCTRL' from project 'iCTRL')
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Models/RunnerClient.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Models/RunnerStatus.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/SecureEnvelope.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Views/SessionListView.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Views/SettingsView.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/TokenFileStore.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/iCTRLApp.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 Compiling\ AppLog.swift,\ AppState.swift,\ AuthManager.swift,\ AuthRequestView.swift,\ BuildStamp.swift,\ DDIMountView.swift,\ DDIMounter.swift,\ DeveloperDiskImage.swift,\ DeveloperDiskImageStore.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Models/AppLog.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Models/AppState.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/AuthManager.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Views/AuthRequestView.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/BuildStamp.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMountView.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/DeveloperDiskImage.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DeveloperDiskImageStore.swift (in target 'iCTRL' from project 'iCTRL')
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Models/AppLog.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:218:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:219:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else { return }
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+        try withUnsafePointer(to: &addr) { ptr in
+            ^                ~~~~~~~~~~~~~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+        try image.withUnsafeBytes { img in
+                  ^               ~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else {
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Models/AppState.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:218:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:219:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else { return }
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+        try withUnsafePointer(to: &addr) { ptr in
+            ^                ~~~~~~~~~~~~~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+        try image.withUnsafeBytes { img in
+                  ^               ~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else {
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/AuthManager.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:218:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:219:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else { return }
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+        try withUnsafePointer(to: &addr) { ptr in
+            ^                ~~~~~~~~~~~~~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+        try image.withUnsafeBytes { img in
+                  ^               ~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else {
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Views/AuthRequestView.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:218:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:219:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else { return }
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+        try withUnsafePointer(to: &addr) { ptr in
+            ^                ~~~~~~~~~~~~~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+        try image.withUnsafeBytes { img in
+                  ^               ~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else {
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/BuildStamp.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:218:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:219:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else { return }
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+        try withUnsafePointer(to: &addr) { ptr in
+            ^                ~~~~~~~~~~~~~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+        try image.withUnsafeBytes { img in
+                  ^               ~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else {
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMountView.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:218:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:219:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else { return }
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+        try withUnsafePointer(to: &addr) { ptr in
+            ^                ~~~~~~~~~~~~~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+        try image.withUnsafeBytes { img in
+                  ^               ~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else {
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:218:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:219:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else { return }
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+        try withUnsafePointer(to: &addr) { ptr in
+            ^                ~~~~~~~~~~~~~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+        try image.withUnsafeBytes { img in
+                  ^               ~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else {
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/DeveloperDiskImage.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:218:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:219:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else { return }
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+        try withUnsafePointer(to: &addr) { ptr in
+            ^                ~~~~~~~~~~~~~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+        try image.withUnsafeBytes { img in
+                  ^               ~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else {
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DeveloperDiskImageStore.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:218:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:219:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else { return }
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:260:13: warning: result of call to 'withUnsafePointer(to:_:)' is unused
+        try withUnsafePointer(to: &addr) { ptr in
+            ^                ~~~~~~~~~~~~~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:326:19: warning: result of call to 'withUnsafeBytes' is unused
+        try image.withUnsafeBytes { img in
+                  ^               ~~~~~~~~
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:253:25: warning: main actor-isolated static property 'tunnelPort' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        addr.sin_port = tunnelPort.bigEndian
+                        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:55:16: note: static property declared here
+    static let tunnelPort: UInt16 = 49152
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:254:15: warning: main actor-isolated static property 'tunnelAddress' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        guard tunnelAddress.withCString({ inet_pton(AF_INET, $0, &addr.sin_addr) }) == 1 else {
+              ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DDIMounter.swift:53:16: note: static property declared here
+    static let tunnelAddress = "10.7.0.1"
+               ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DeveloperDiskImageStore.swift:60:52: warning: main actor-isolated static property 'mirrorBase' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+            URL(string: "\(DeveloperDiskImageStore.mirrorBase)/\(DeveloperDiskImageStore.mountMethod.mirrorFolder)/\(rawValue)")!
+                                                   ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/DeveloperDiskImageStore.swift:48:24: note: static property declared here
+    private static let mirrorBase =
+                       ^
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ AssistantCore (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+
+EmitSwiftModule normal arm64 (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for iCTRL (in target 'iCTRL' from project 'iCTRL')
+
+SwiftDriver\ Compilation\ Requirements iCTRL normal arm64 com.apple.xcode.tools.swift.compiler (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name iCTRL -Onone -enforce-exclusivity\=checked @/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -target arm64-apple-ios16.0 -g -module-cache-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Index.noindex/DataStore -swift-version 5 -I /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos -F /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos -F Frameworks -c -j4 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -output-file-map /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-generated-files.hmap -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-own-target-headers.hmap -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL-e065b9312411c0ad7f6632fcab252f6b-VFS-iphoneos/all-product-headers.yaml -Xcc -iquote -Xcc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-project-headers.hmap -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/include -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL-Swift.h -working-directory /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration -experimental-emit-module-separately -disable-cmo
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for AssistantCore (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+
+SwiftDriver\ Compilation\ Requirements AssistantCore normal arm64 com.apple.xcode.tools.swift.compiler (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name AssistantCore -Onone -enforce-exclusivity\=checked @/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore.SwiftFileList -DSWIFT_PACKAGE -DDEBUG -DXcode -plugin-path /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -target arm64-apple-ios16.0 -g -module-cache-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -suppress-warnings -index-store-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Index.noindex/DataStore -swift-version 5 -I /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos -I /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos -F /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -F /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk/Developer/Library/Frameworks -c -j4 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -output-file-map /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/ModuleCache.noindex/Session.modulevalidation -package-name iphoneassistantcore -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore_const_extract_protocols.json -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/include -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore-Swift.h -working-directory /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj -experimental-emit-module-separately -disable-cmo
+
+SwiftCompile normal arm64 Compiling\ JSONRPCServer.swift,\ KeychainStore.swift,\ LocalDevVPN.swift,\ Localized.swift,\ LogListView.swift,\ MainView.swift,\ NearbyService.swift,\ NetworkPermission.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/JSONRPCServer.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/KeychainStore.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/LocalDevVPN.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLUITests/Localized.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Views/LogListView.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Views/MainView.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/NearbyService.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Models/NetworkPermission.swift (in target 'iCTRL' from project 'iCTRL')
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/JSONRPCServer.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/JSONRPCServer.swift:988:9: warning: switch must be exhaustive
+        switch host {
+        ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/JSONRPCServer.swift:988:9: note: add missing case: '.name(_, _)'
+        switch host {
+        ^
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/KeychainStore.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/LocalDevVPN.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/LocalDevVPN.swift:56:18: warning: concurrently-executed local function 'finish' must be marked as '@Sendable'; this is an error in the Swift 6 language mode
+            func finish(_ r: TunnelProbe) {
+                 ^
+            @Sendable 
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/LocalDevVPN.swift:50:20: warning: expression is 'async' but is not marked with 'await'; this is an error in the Swift 6 language mode
+        let host = NWEndpoint.Host(DDIMounter.tunnelAddress)
+                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                   await 
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/LocalDevVPN.swift:50:36: note: property access is 'async'
+        let host = NWEndpoint.Host(DDIMounter.tunnelAddress)
+                                   ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/LocalDevVPN.swift:51:26: warning: expression is 'async' but is not marked with 'await'; this is an error in the Swift 6 language mode
+        guard let port = NWEndpoint.Port(rawValue: DDIMounter.tunnelPort) else { return .unreachable("bad port") }
+                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                         await 
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/LocalDevVPN.swift:51:52: note: property access is 'async'
+        guard let port = NWEndpoint.Port(rawValue: DDIMounter.tunnelPort) else { return .unreachable("bad port") }
+                                                   ^
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/LocalDevVPN.swift:88:34: warning: expression is 'async' but is not marked with 'await'; this is an error in the Swift 6 language mode
+        ictrlLog("Tunnel probe \(DDIMounter.tunnelAddress):\(DDIMounter.tunnelPort) → \(result); interfaces: \(interfaceSummary())")
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/LocalDevVPN.swift:88:34: note: property access is 'async'
+        ictrlLog("Tunnel probe \(DDIMounter.tunnelAddress):\(DDIMounter.tunnelPort) → \(result); interfaces: \(interfaceSummary())")
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/LocalDevVPN.swift:88:62: warning: expression is 'async' but is not marked with 'await'; this is an error in the Swift 6 language mode
+        ictrlLog("Tunnel probe \(DDIMounter.tunnelAddress):\(DDIMounter.tunnelPort) → \(result); interfaces: \(interfaceSummary())")
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/LocalDevVPN.swift:88:62: note: property access is 'async'
+        ictrlLog("Tunnel probe \(DDIMounter.tunnelAddress):\(DDIMounter.tunnelPort) → \(result); interfaces: \(interfaceSummary())")
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLUITests/Localized.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Views/LogListView.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Views/MainView.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/NearbyService.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Models/NetworkPermission.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftMergeGeneratedHeaders /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources/iCTRL-Swift.h /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL-Swift.h (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    builtin-swiftHeaderTool -arch arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL-Swift.h -o /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources/iCTRL-Swift.h
+
+SwiftDriverJobDiscovery normal arm64 Compiling RunnerClient.swift, RunnerStatus.swift, SecureEnvelope.swift, SessionListView.swift, SettingsView.swift, TokenFileStore.swift, iCTRLApp.swift, GeneratedAssetSymbols.swift (in target 'iCTRL' from project 'iCTRL')
+
+Copy /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/iCTRL.swiftmodule/arm64-apple-ios.swiftmodule /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.swiftmodule (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.swiftmodule /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/iCTRL.swiftmodule/arm64-apple-ios.swiftmodule
+
+Copy /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/iCTRL.swiftmodule/arm64-apple-ios.swiftdoc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.swiftdoc (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.swiftdoc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/iCTRL.swiftmodule/arm64-apple-ios.swiftdoc
+
+Copy /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/iCTRL.swiftmodule/arm64-apple-ios.abi.json /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.abi.json (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.abi.json /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/iCTRL.swiftmodule/arm64-apple-ios.abi.json
+
+Copy /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/iCTRL.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.swiftsourceinfo (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.swiftsourceinfo /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/iCTRL.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo
+
+SwiftMergeGeneratedHeaders /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/GeneratedModuleMaps-iphoneos/AssistantCore-Swift.h /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore-Swift.h (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore
+    builtin-swiftHeaderTool -arch arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore-Swift.h -o /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/GeneratedModuleMaps-iphoneos/AssistantCore-Swift.h
+
+Copy /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/AssistantCore.swiftmodule/arm64-apple-ios.swiftmodule /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore.swiftmodule (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore.swiftmodule /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/AssistantCore.swiftmodule/arm64-apple-ios.swiftmodule
+
+Copy /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/AssistantCore.swiftmodule/arm64-apple-ios.swiftdoc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore.swiftdoc (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore.swiftdoc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/AssistantCore.swiftmodule/arm64-apple-ios.swiftdoc
+
+Copy /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/AssistantCore.swiftmodule/arm64-apple-ios.abi.json /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore.abi.json (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore.abi.json /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/AssistantCore.swiftmodule/arm64-apple-ios.abi.json
+
+Copy /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/AssistantCore.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore.swiftsourceinfo (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore.swiftsourceinfo /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/AssistantCore.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo
+
+SwiftCompile normal arm64 Compiling\ NetworkTypeMonitor.swift,\ PairingFileStore.swift,\ RPCMethod.swift,\ RPCTypes.swift,\ RemoteHTML.swift,\ RemoteIcon.swift,\ RunnerAdmin.swift,\ RunnerAdminViews.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/NetworkTypeMonitor.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/PairingFileStore.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/RPCMethod.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/RPCTypes.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/RemoteHTML.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/RemoteIcon.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Models/RunnerAdmin.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Views/RunnerAdminViews.swift (in target 'iCTRL' from project 'iCTRL')
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/NetworkTypeMonitor.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/DDI/PairingFileStore.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/RPCMethod.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/RPCTypes.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/RemoteHTML.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLKit/RemoteIcon.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Models/RunnerAdmin.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRLApp/Views/RunnerAdminViews.swift (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    
+
+SwiftCompile normal arm64 Compiling\ PIISanitizer.swift,\ PinduoduoDriver.swift,\ QianniuDriver.swift,\ ReplyQualityGate.swift,\ SQLiteDatabase.swift,\ SQLiteTaskQueue.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/PIISanitizer.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/PinduoduoDriver.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/QianniuDriver.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ReplyQualityGate.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/SQLiteDatabase.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/SQLiteTaskQueue.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/PIISanitizer.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/PinduoduoDriver.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/QianniuDriver.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ReplyQualityGate.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/SQLiteDatabase.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/SQLiteTaskQueue.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftDriverJobDiscovery normal arm64 Compiling AppLog.swift, AppState.swift, AuthManager.swift, AuthRequestView.swift, BuildStamp.swift, DDIMountView.swift, DDIMounter.swift, DeveloperDiskImage.swift, DeveloperDiskImageStore.swift (in target 'iCTRL' from project 'iCTRL')
+
+SwiftCompile normal arm64 Compiling\ AccessibilitySnapshot.swift,\ AppUIBridge.swift,\ CommerceMessageDetector.swift,\ DeepSeekAppDriver.swift,\ ICTRLDeepSeekBridge.swift,\ ICTRLJSON.swift,\ ICTRLRPCClient.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/AccessibilitySnapshot.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/AppUIBridge.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/CommerceMessageDetector.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/DeepSeekAppDriver.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ICTRLDeepSeekBridge.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ICTRLJSON.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ICTRLRPCClient.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+Failed frontend command:
+/Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift-frontend -frontend -c -primary-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/AccessibilitySnapshot.swift -primary-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/AppUIBridge.swift -primary-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/CommerceMessageDetector.swift -primary-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/DeepSeekAppDriver.swift -primary-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ICTRLDeepSeekBridge.swift -primary-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ICTRLJSON.swift -primary-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ICTRLRPCClient.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/Idempotency.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/LogisticsGuard.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ManualTakeoverCenter.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ManualTakeoverModels.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/MerchantPolicy.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/Models.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/PIISanitizer.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/PinduoduoDriver.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/QianniuDriver.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ReplyQualityGate.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/SQLiteDatabase.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/SQLiteTaskQueue.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/StoreCatalog.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/TaskQueueCipher.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/TaskQueueModels.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/TaskScheduler.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/TaskStateMachine.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/WeChatLogisticsCoordinator.swift -supplementary-output-file-map /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/supplementaryOutputs-9 -target arm64-apple-ios16.0 -Xllvm -aarch64-use-tbi -enable-objc-interop -stack-check -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -I /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos -I /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos -F /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -F /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk/Developer/Library/Frameworks -no-color-diagnostics -enable-testing -g -debug-info-format\=dwarf -dwarf-version\=4 -module-cache-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/ModuleCache.noindex -suppress-warnings -swift-version 5 -enforce-exclusivity\=checked -Onone -D SWIFT_PACKAGE -D DEBUG -D Xcode -serialize-debugging-options -const-gather-protocols-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AssistantCore_const_extract_protocols.json -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -plugin-path /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -validate-clang-modules-once -clang-build-session-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj -resource-dir /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift -enable-anonymous-context-mangled-names -file-compilation-dir /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj -Xcc -ivfsstatcache -Xcc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/swift-overrides.hmap -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/include -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -module-name AssistantCore -package-name iphoneassistantcore -frontend-parseable-output -disable-clang-spi -target-sdk-version 18.5 -target-sdk-name iphoneos18.5 -external-plugin-path /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/swift/host/plugins\#/Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/swift-plugin-server -external-plugin-path /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/local/lib/swift/host/plugins\#/Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/swift-plugin-server -in-process-plugin-server-path /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/libSwiftInProcPluginServer.dylib -plugin-path /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins -plugin-path /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/local/lib/swift/host/plugins -o /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AccessibilitySnapshot.o -o /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AppUIBridge.o -o /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/CommerceMessageDetector.o -o /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/DeepSeekAppDriver.o -o /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/ICTRLDeepSeekBridge.o -o /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/ICTRLJSON.o -o /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/ICTRLRPCClient.o -index-unit-output-path /iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AccessibilitySnapshot.o -index-unit-output-path /iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/AppUIBridge.o -index-unit-output-path /iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/CommerceMessageDetector.o -index-unit-output-path /iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/DeepSeekAppDriver.o -index-unit-output-path /iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/ICTRLDeepSeekBridge.o -index-unit-output-path /iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/ICTRLJSON.o -index-unit-output-path /iPhoneAssistantCore.build/Debug-iphoneos/AssistantCore.build/Objects-normal/arm64/ICTRLRPCClient.o -index-store-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Index.noindex/DataStore -index-system-modules
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/AccessibilitySnapshot.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/AppUIBridge.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/CommerceMessageDetector.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/CommerceMessageDetector.swift:692:47: error: value of tuple type '(x: Double, y: Double, text: String)' has no member 'label'
+        return (clean(customer), clean(latest.label))
+                                       ~~~~~~ ^~~~~
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/DeepSeekAppDriver.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ICTRLDeepSeekBridge.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ICTRLJSON.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ICTRLRPCClient.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftDriverJobDiscovery normal arm64 Compiling JSONRPCServer.swift, KeychainStore.swift, LocalDevVPN.swift, Localized.swift, LogListView.swift, MainView.swift, NearbyService.swift, NetworkPermission.swift (in target 'iCTRL' from project 'iCTRL')
+
+SwiftCompile normal arm64 Compiling\ StoreCatalog.swift,\ TaskQueueCipher.swift,\ TaskQueueModels.swift,\ TaskScheduler.swift,\ TaskStateMachine.swift,\ WeChatLogisticsCoordinator.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/StoreCatalog.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/TaskQueueCipher.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/TaskQueueModels.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/TaskScheduler.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/TaskStateMachine.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/WeChatLogisticsCoordinator.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/StoreCatalog.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/TaskQueueCipher.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/TaskQueueModels.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/TaskScheduler.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/TaskStateMachine.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/WeChatLogisticsCoordinator.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftDriverJobDiscovery normal arm64 Compiling PIISanitizer.swift, PinduoduoDriver.swift, QianniuDriver.swift, ReplyQualityGate.swift, SQLiteDatabase.swift, SQLiteTaskQueue.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+
+SwiftCompile normal arm64 Compiling\ Idempotency.swift,\ LogisticsGuard.swift,\ ManualTakeoverCenter.swift,\ ManualTakeoverModels.swift,\ MerchantPolicy.swift,\ Models.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/Idempotency.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/LogisticsGuard.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ManualTakeoverCenter.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ManualTakeoverModels.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/MerchantPolicy.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/Models.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/Idempotency.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/LogisticsGuard.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ManualTakeoverCenter.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ManualTakeoverModels.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/MerchantPolicy.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/Models.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/iCTRL.xcodeproj
+    
+
+SwiftDriverJobDiscovery normal arm64 Compiling NetworkTypeMonitor.swift, PairingFileStore.swift, RPCMethod.swift, RPCTypes.swift, RemoteHTML.swift, RemoteIcon.swift, RunnerAdmin.swift, RunnerAdminViews.swift (in target 'iCTRL' from project 'iCTRL')
+
+SwiftDriverJobDiscovery normal arm64 Compiling StoreCatalog.swift, TaskQueueCipher.swift, TaskQueueModels.swift, TaskScheduler.swift, TaskStateMachine.swift, WeChatLogisticsCoordinator.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+
+SwiftDriver\ Compilation iCTRL normal arm64 com.apple.xcode.tools.swift.compiler (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    builtin-Swift-Compilation -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name iCTRL -Onone -enforce-exclusivity\=checked @/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -target arm64-apple-ios16.0 -g -module-cache-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Index.noindex/DataStore -swift-version 5 -I /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos -F /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos -F Frameworks -c -j4 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -output-file-map /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-generated-files.hmap -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-own-target-headers.hmap -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL-e065b9312411c0ad7f6632fcab252f6b-VFS-iphoneos/all-product-headers.yaml -Xcc -iquote -Xcc /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/iCTRL-project-headers.hmap -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/include -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL-Swift.h -working-directory /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration -experimental-emit-module-separately -disable-cmo
+
+Ld /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/iCTRL.app/iCTRL.debug.dylib normal (in target 'iCTRL' from project 'iCTRL')
+    cd /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios16.0 -dynamiclib -isysroot /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -O0 -L/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos -L/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos -F/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos -F/Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos -FFrameworks -filelist /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.LinkFileList -install_name @rpath/iCTRL.debug.dylib -Xlinker -rpath -Xlinker @executable_path/Frameworks -dead_strip -Xlinker -object_path_lto -Xlinker /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -dependency_info -Xlinker /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Intermediates.noindex/iCTRL.build/Debug-iphoneos/iCTRL.build/Objects-normal/arm64/iCTRL.swiftmodule -Xlinker -alias -Xlinker _main -Xlinker ___debug_main_executable_dylib_entry_point -lidevice_ffi -o /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/Build/Products/Debug-iphoneos/iCTRL.app/iCTRL.debug.dylib
+
+warning: Run script build phase 'Strip unnecessary XCTest frameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'iCTRLUITests' from project 'iCTRL')
+** TEST BUILD FAILED **
+
+
+The following build commands failed:
+	SwiftCompile normal arm64 Compiling\ AccessibilitySnapshot.swift,\ AppUIBridge.swift,\ CommerceMessageDetector.swift,\ DeepSeekAppDriver.swift,\ ICTRLDeepSeekBridge.swift,\ ICTRLJSON.swift,\ ICTRLRPCClient.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/AccessibilitySnapshot.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/AppUIBridge.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/CommerceMessageDetector.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/DeepSeekAppDriver.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ICTRLDeepSeekBridge.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ICTRLJSON.swift /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/ICTRLRPCClient.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+	SwiftCompile normal arm64 /Users/runner/work/iCTRLRunnerIntegration/iCTRLRunnerIntegration/build/unsigned/SourcePackages/checkouts/iPhoneAssistantCore/Sources/AssistantCore/CommerceMessageDetector.swift (in target 'AssistantCore' from project 'iPhoneAssistantCore')
+	Building project iCTRL for testing with scheme iCTRL
+(3 failures)
+make: *** [build] Error 65
