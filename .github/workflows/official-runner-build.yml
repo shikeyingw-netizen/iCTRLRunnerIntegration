@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -69,3 +69,27 @@ jobs:
             iCTRL.ipa
             official-runner-build.log
           if-no-files-found: ignore
+
+      - name: Publish build failure report
+        if: failure()
+        shell: bash
+        run: |
+          set -euo pipefail
+          report="${RUNNER_TEMP}/last-ictrl-build.txt"
+          {
+            echo "Run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+            echo "Commit: ${GITHUB_SHA}"
+            echo
+            grep -nE 'error:|fatal error:|failed|❌|warning:' official-runner-build.log \
+              | tail -n 600 \
+              || true
+          } > "${report}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan ci-reports
+          git rm -rf .
+          mkdir -p ci
+          cp "${report}" ci/last-ictrl-build.txt
+          git add ci/last-ictrl-build.txt
+          git commit -m "Update official iCTRL build failure report [skip ci]"
+          git push --force origin HEAD:ci-reports
