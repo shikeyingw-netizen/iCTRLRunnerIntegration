@@ -2305,7 +2305,6 @@ class ActionHandler {
                 )
             )
         }
-        UIPasteboard.general.string = text
         guard let bid = resolveForegroundBundleId() else {
             return (nil, .serverError("No foreground app for paste_text"))
         }
@@ -2330,9 +2329,18 @@ class ActionHandler {
             )
         }
         var sent = false
-        let raised = ObjCException.catching {
-            element.typeKey("v", modifierFlags: .command)
-            sent = true
+        var raised: String?
+        let performPaste = {
+            raised = ObjCException.catching {
+                UIPasteboard.general.string = text
+                element.typeKey("v", modifierFlags: .command)
+                sent = true
+            }
+        }
+        if Thread.isMainThread {
+            performPaste()
+        } else {
+            DispatchQueue.main.sync(execute: performPaste)
         }
         guard sent else {
             return (
