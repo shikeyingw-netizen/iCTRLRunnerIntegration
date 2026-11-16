@@ -40,6 +40,8 @@ class JSONRPCServer {
     /// only remove automation authority. A Home Screen Shortcut can open
     /// http://127.0.0.1:8200/takeover with one tap.
     var onEmergencyTakeoverRequest: ((String) -> Void)?
+    var onAutomationResumeRequest: (() -> Void)?
+    var onAutomationResumeConfirm: (() -> Void)?
 
     /// Fired right after a UI-mutating JSON-RPC completes (tap, swipe, home, …)
     /// so the host can nudge the video pipeline to emit a keyframe immediately
@@ -603,6 +605,59 @@ class JSONRPCServer {
                 <p>自动点击、输入、切换 App 和发送均已停止。</p>
                 <p>只有在本机明确确认恢复后才能重新运行。</p>
                 </body>
+                """
+            )
+
+        case ("GET", "/resume-request"), ("GET", "/resume-confirm"):
+            guard isLoopback(connection) else {
+                sendHTTPResponse(
+                    connection: connection,
+                    status: 403,
+                    body: "Resume is accepted only on this iPhone."
+                )
+                return
+            }
+            if pathOnly == "/resume-request" {
+                onAutomationResumeRequest?()
+            } else {
+                onAutomationResumeConfirm?()
+            }
+            sendHTTPResponse(
+                connection: connection,
+                status: 200,
+                contentType: "text/html; charset=utf-8",
+                body: pathOnly == "/resume-request"
+                    ? "<h1>正在检查队列和未完成发送</h1><p>自动化仍保持锁定。</p>"
+                    : "<h1>收到恢复确认</h1><p>正在执行恢复前安全检查。</p>"
+            )
+
+        case ("GET", "/control"):
+            guard isLoopback(connection) else {
+                sendHTTPResponse(
+                    connection: connection,
+                    status: 403,
+                    body: "The emergency control page is local to this iPhone."
+                )
+                return
+            }
+            sendHTTPResponse(
+                connection: connection,
+                status: 200,
+                contentType: "text/html; charset=utf-8",
+                body: """
+                <!doctype html><meta name="viewport" content="width=device-width">
+                <title>客服自动化控制</title>
+                <style>
+                body{font:-apple-system-body;max-width:560px;margin:auto;padding:24px}
+                a{display:block;padding:18px;margin:14px 0;border-radius:14px;
+                  text-align:center;text-decoration:none;font-weight:700}
+                .stop{background:#d70015;color:white}.safe{background:#eef0f4;color:#111}
+                </style>
+                <h1>客服自动化控制</h1>
+                <p>仅在当前 iPhone 本机有效。</p>
+                <a class="stop" href="/takeover">紧急人工接管</a>
+                <a class="safe" href="/resume-request">检查并申请恢复</a>
+                <a class="safe" href="/resume-confirm">确认恢复自动运行</a>
                 """
             )
 

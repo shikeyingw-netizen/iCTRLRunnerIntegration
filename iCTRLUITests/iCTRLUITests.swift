@@ -1528,6 +1528,14 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
         srv.onEmergencyTakeoverRequest = { [weak self] reason in
             self?.performHumanTakeover(reason: reason)
         }
+        srv.onAutomationResumeRequest = { [weak self] in
+            self?.requestResumeFromDevice()
+        }
+        srv.onAutomationResumeConfirm = { [weak self] in
+            Task {
+                await self?.confirmResumeFromDevice()
+            }
+        }
         // Route the server's internal lifecycle messages into the persisted log.
         srv.onLog = { Self.logBuffer.append($0) }
         // Persisted-log endpoints (crash recovery — survive process restarts).
