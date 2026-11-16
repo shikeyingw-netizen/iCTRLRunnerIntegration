@@ -1,4 +1,5 @@
 import XCTest
+import AssistantCore
 import UserNotifications
 import UIKit
 import Network
@@ -26,11 +27,18 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
     static let serverStoppedCategoryID = "SERVER_STOPPED"
     static let stopConfirmCategoryID = "SERVER_STOP_CONFIRM"
     static let stopConfirmNotifID = "ictrl.server.stop-confirm"
+    static let takeoverActiveCategoryID = "AUTOMATION_TAKEOVER_ACTIVE"
+    static let resumeConfirmCategoryID = "AUTOMATION_RESUME_CONFIRM"
+    static let takeoverNotifID = "ictrl.automation.takeover"
+    static let resumeConfirmNotifID = "ictrl.automation.resume-confirm"
     static let enableRemoteActionID = "ENABLE_REMOTE"
     static let disableRemoteActionID = "DISABLE_REMOTE"
     static let enableNearbyActionID = "ENABLE_NEARBY"
     static let disableNearbyActionID = "DISABLE_NEARBY"
     static let stopServerActionID = "STOP_SERVER"
+    static let emergencyTakeoverActionID = "EMERGENCY_TAKEOVER"
+    static let requestResumeActionID = "REQUEST_AUTOMATION_RESUME"
+    static let confirmResumeActionID = "CONFIRM_AUTOMATION_RESUME"
     static let copyLogsActionID = "COPY_LOGS"
 
     static let logBuffer = LogBuffer(capacity: 1000)
@@ -439,6 +447,22 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
             Self.logBuffer.append("🗂 Logs persist to \(dir)/ictrl-YYYY-MM-DD.log")
         }
 
+        do {
+            let control = try AutomationControlGate.shared.bootstrap()
+            Self.logBuffer.append(
+                "🔐 Automation control restored: state="
+                    + "\(control.state.rawValue) "
+                    + "generation=\(control.generation) "
+                    + "phone_control="
+                    + "\(control.state.blocksPhoneControl ? "blocked" : "allowed")"
+            )
+        } catch {
+            Self.logBuffer.append(
+                "⛔️ Automation-control SQLite restore failed; "
+                    + "the in-memory gate remains fail-closed: "
+                    + String(describing: error)
+            )
+        }
         actionHandler = ActionHandler(app: app)
         startCustomerServiceRuntime()
 
@@ -711,6 +735,22 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
             return
         }
 
+        // ictrl://takeover is safe to honor immediately: it can only reduce
+        // automation authority. This makes a Shortcut or on-device link a
+        // fail-closed emergency stop even if the server UI queue is busy.
+        if host == "takeover" || host == "pause" {
+            performHumanTakeover(
+                reason: "Emergency takeover deep link"
+            )
+            return
+        }
+
+        // A link may request the preflight, but never approves the resume.
+        if host == "resume" {
+            requestResumeFromDevice()
+            return
+        }
+
         // Only the "start" host triggers a callback jump; others are ignored.
         guard host == "start" || host == nil else {
             Self.logBuffer.append("🔗 Ignored ictrl:// host: \(host ?? "")")
@@ -840,9 +880,18 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
             title: L10n.t(.stopServer),
             options: [.destructive, .authenticationRequired]
         )
+        let emergencyTakeoverAction = UNNotificationAction(
+            identifier: Self.emergencyTakeoverActionID,
+            title: "紧急人工接管",
+            options: [.destructive]
+        )
         let serverReadyCategory = UNNotificationCategory(
             identifier: Self.serverReadyCategoryID,
-            actions: [enableRemoteAction, stopServerAction],
+            actions: [
+                emergencyTakeoverAction,
+                enableRemoteAction,
+                stopServerAction,
+            ],
             intentIdentifiers: [],
             options: []
         )
@@ -866,14 +915,24 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
         // Remote access on, nearby off: offer to turn nearby on.
         let serverRemoteCategory = UNNotificationCategory(
             identifier: Self.serverRemoteCategoryID,
-            actions: [disableRemoteAction, enableNearbyAction, stopServerAction],
+            actions: [
+                emergencyTakeoverAction,
+                disableRemoteAction,
+                enableNearbyAction,
+                stopServerAction,
+            ],
             intentIdentifiers: [],
             options: []
         )
         // Remote access and nearby on.
         let serverNearbyCategory = UNNotificationCategory(
             identifier: Self.serverNearbyCategoryID,
-            actions: [disableRemoteAction, disableNearbyAction, stopServerAction],
+            actions: [
+                emergencyTakeoverAction,
+                disableRemoteAction,
+                disableNearbyAction,
+                stopServerAction,
+            ],
             intentIdentifiers: [],
             options: []
         )
@@ -888,7 +947,7 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
         )
         let serverStoppedCategory = UNNotificationCategory(
             identifier: Self.serverStoppedCategoryID,
-            actions: [copyLogsAction],
+            actions: [emergencyTakeoverAction, copyLogsAction],
             intentIdentifiers: [],
             options: []
         )
@@ -897,13 +956,38 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
         // open that URL, so it only asks; stopping takes an unlocked device.
         let stopConfirmCategory = UNNotificationCategory(
             identifier: Self.stopConfirmCategoryID,
-            actions: [stopServerAction],
+            actions: [emergencyTakeoverAction, stopServerAction],
+            intentIdentifiers: [],
+            options: []
+        )
+
+        let requestResumeAction = UNNotificationAction(
+            identifier: Self.requestResumeActionID,
+            title: "检查并申请恢复",
+            options: [.authenticationRequired]
+        )
+        let takeoverActiveCategory = UNNotificationCategory(
+            identifier: Self.takeoverActiveCategoryID,
+            actions: [requestResumeAction],
+            intentIdentifiers: [],
+            options: []
+        )
+        let confirmResumeAction = UNNotificationAction(
+            identifier: Self.confirmResumeActionID,
+            title: "确认恢复自动运行",
+            options: [.authenticationRequired]
+        )
+        let resumeConfirmCategory = UNNotificationCategory(
+            identifier: Self.resumeConfirmCategoryID,
+            actions: [confirmResumeAction],
             intentIdentifiers: [],
             options: []
         )
 
         center.setNotificationCategories([authCategory, serverReadyCategory, serverRemoteCategory,
-                                          serverNearbyCategory, serverStoppedCategory, stopConfirmCategory])
+                                          serverNearbyCategory, serverStoppedCategory,
+                                          stopConfirmCategory, takeoverActiveCategory,
+                                          resumeConfirmCategory])
 
         // Whatever a previous run left in Notification Centre is stale: pairing
         // prompts can no longer be answered (their requests died with that
@@ -930,6 +1014,28 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
     ) {
         let actionID = response.actionIdentifier
         let requestID = response.notification.request.identifier
+
+        if actionID == Self.emergencyTakeoverActionID {
+            performHumanTakeover(
+                reason: "Emergency action from iPhone notification"
+            )
+            completionHandler()
+            return
+        }
+
+        if actionID == Self.requestResumeActionID {
+            requestResumeFromDevice()
+            completionHandler()
+            return
+        }
+
+        if actionID == Self.confirmResumeActionID {
+            Task { [weak self] in
+                await self?.confirmResumeFromDevice()
+                completionHandler()
+            }
+            return
+        }
 
         // Handle "Copy Logs"
         if actionID == Self.copyLogsActionID {
@@ -1068,12 +1174,26 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
     /// they get their own lane. Every method here must be free of XCUITest APIs.
     private static let nonUIMethods: Set<String> = [
         "config", "reset", "is_locked", "logs", "recent_logs",
+        "automation_control",
         "resolve_app", "search_app", "search_apps",
         "list_apps", "installed_apps",
         // Class-metadata introspection only — takes no snapshot, touches no
         // element. Belongs here precisely because you want to run it WHILE the
         // UI channel is wedged, to find out what the snapshot API supports.
         "snapshot_api",
+    ]
+
+    /// Immediate pre-queue rejection list. This duplicates the last-line guard
+    /// in ActionHandler so a control request queued while takeover is active
+    /// fails immediately instead of waiting behind unrelated UI work.
+    private static let phoneControlRPCs: Set<String> = [
+        "tap", "double_tap", "long_press", "swipe", "scroll", "drag",
+        "page", "page_down", "page_up", "collect",
+        "scroll_to_element", "scroll_to", "tap_element", "find_and_tap",
+        "type", "clear_text", "paste_text",
+        "launch_app", "activate_app", "terminate_app",
+        "home", "lock", "unlock", "open", "open_url",
+        "press_button",
     ]
 
     /// Compact one-line summary of the most useful params for the request log.
@@ -1254,6 +1374,24 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
                 return
             }
 
+            if Self.phoneControlRPCs.contains(method),
+               AutomationControlGate.shared.isBlocked {
+                Self.logBuffer.append(
+                    "🛑 \(method) rejected before RPC queue by manual takeover"
+                )
+                completion(
+                    nil,
+                    JSONRPCError(
+                        code: -32010,
+                        message: AutomationControlGate.shared.blockMessage(
+                            method: method
+                        ),
+                        data: nil
+                    )
+                )
+                return
+            }
+
             // Run the work on the serial RPC queue with a watchdog timeout so a
             // hung call reports back to the client instead of stalling forever.
             let done = DispatchSemaphore(value: 0)
@@ -1320,6 +1458,8 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
                 let work = {
                     if method == "config" {
                         result = self.handleConfig(params)
+                    } else if method == "automation_control" {
+                        result = self.handleAutomationControl(params)
                     } else if let handler = self.actionHandler {
                         let reason = ObjCException.catching {
                             result = handler.dispatch(method: method, params: params)
@@ -1385,6 +1525,9 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
             let timing = Self.logBuffer.timingSummary()
             return logs + "\n\n=== Timing summary (ms) ===\n" + timing
         }
+        srv.onEmergencyTakeoverRequest = { [weak self] reason in
+            self?.performHumanTakeover(reason: reason)
+        }
         // Route the server's internal lifecycle messages into the persisted log.
         srv.onLog = { Self.logBuffer.append($0) }
         // Persisted-log endpoints (crash recovery — survive process restarts).
@@ -1431,6 +1574,100 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
     }
 
     // MARK: - Config RPC
+
+    private func handleAutomationControl(
+        _ params: [String: JSONValue]?
+    ) -> ([String: JSONValue]?, JSONRPCError?) {
+        let action = params?["action"]?.stringValue ?? "status"
+        let reason = params?["reason"]?.stringValue
+            ?? "Remote emergency request"
+        do {
+            let record: AssistantCore.AutomationControlRecord
+            switch action {
+            case "status":
+                record = AutomationControlGate.shared.status
+            case "takeover", "stop":
+                record = try AutomationControlGate.shared
+                    .engageHumanTakeover(
+                        reason: reason,
+                        actor: "remote"
+                    )
+                postTakeoverNotification(reason: reason)
+            case "pause":
+                record = try AutomationControlGate.shared.pauseAutomation(
+                    reason: reason,
+                    actor: "remote"
+                )
+                postTakeoverNotification(reason: reason)
+            case "request_resume":
+                let peer = params?[JSONRPCServer.peerSourceParam]?
+                    .stringValue
+                guard peer == PeerSource.local.rawValue else {
+                    return (
+                        nil,
+                        JSONRPCError(
+                            code: -32011,
+                            message: "Resume must be requested from this "
+                                + "iPhone, not from a remote client.",
+                            data: nil
+                        )
+                    )
+                }
+                record = try AutomationControlGate.shared
+                    .requestManualResume(
+                        reason: reason,
+                        actor: "user"
+                    )
+            case "confirm_resume":
+                return (
+                    nil,
+                    JSONRPCError(
+                        code: -32011,
+                        message: "Resume cannot be approved over RPC. "
+                            + "Use the authenticated on-device confirmation.",
+                        data: nil
+                    )
+                )
+            default:
+                return (
+                    nil,
+                    JSONRPCError(
+                        code: -32602,
+                        message: "Unknown automation_control action. "
+                            + "Use status, takeover, pause or request_resume.",
+                        data: nil
+                    )
+                )
+            }
+            return (
+                [
+                    "state": .string(record.state.rawValue),
+                    "generation": .int(record.generation),
+                    "updated_at": .double(
+                        record.updatedAt.timeIntervalSince1970
+                    ),
+                    "actor": .string(record.actor),
+                    "reason": .string(record.reason),
+                    "phone_control": .string(
+                        record.state.blocksPhoneControl
+                            ? "blocked"
+                            : "allowed"
+                    ),
+                ],
+                nil
+            )
+        } catch {
+            return (
+                nil,
+                JSONRPCError(
+                    code: -32012,
+                    message: "Automation control transition failed: "
+                        + String(describing: error),
+                    data: nil
+                )
+            )
+        }
+    }
 
     /// Read (no params) or update basic settings.
     /// Params: {allow_remote_access?: bool, listen_port?: int}
@@ -1978,6 +2215,9 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
 
     /// Category, and so the long-press menu, for the current state.
     private var statusCategory: String {
+        if AutomationControlGate.shared.isBlocked {
+            return Self.takeoverActiveCategoryID
+        }
         guard remoteAccessEnabled else { return Self.serverReadyCategoryID }
         return nearbyEnabled ? Self.serverNearbyCategoryID : Self.serverRemoteCategoryID
     }
@@ -1986,6 +2226,23 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
     /// While advertised nearby, the name nearby clients see is listed too.
     private func postStatusNotification(title: String = L10n.t(.serverReadyTitle), detail: String,
                                         silent: Bool = false) {
+        let control = AutomationControlGate.shared.status
+        if control.state.blocksPhoneControl {
+            let lines = [
+                "🛑 自动化已锁定：\(control.state.rawValue)",
+                "所有自动点击、输入、切 App 和发送均已拦截",
+                detail,
+                "长按通知可检查当前页面与队列；恢复必须再次明确确认",
+            ]
+            sendNotification(
+                title: "客服助手已进入人工接管",
+                body: lines.joined(separator: "\n"),
+                category: statusCategory,
+                identifier: Self.takeoverNotifID,
+                silent: silent
+            )
+            return
+        }
         var lines = [statusMarker]
         if remoteAccessEnabled, server?.isNearbyAdvertising ?? false {
             lines.append("“\(NearbyIdentity.name)”")
@@ -1994,6 +2251,121 @@ final class iCTRLUITests: XCTestCase, UNUserNotificationCenterDelegate {
         lines.append(L10n.t(remoteAccessEnabled ? .longPressNearbyOrStop : .longPressRemoteOrStop))
         sendNotification(title: title, body: lines.joined(separator: "\n"), category: statusCategory,
                          identifier: Self.serverReadyNotifID, silent: silent)
+    }
+
+    private func performHumanTakeover(reason: String) {
+        do {
+            let record = try AutomationControlGate.shared
+                .engageHumanTakeover(
+                    reason: reason,
+                    actor: "user"
+                )
+            Self.logBuffer.append(
+                "🛑 HUMAN TAKEOVER immediate: generation="
+                    + "\(record.generation), reason=\(reason)"
+            )
+        } catch {
+            Self.logBuffer.append(
+                "⛔️ Human takeover persistence failed; the in-memory gate "
+                    + "remains fail-closed: \(error)"
+            )
+        }
+        if let runtime = customerServiceRuntime {
+            Task {
+                do {
+                    try await runtime.engageHumanTakeover(reason: reason)
+                } catch {
+                    Self.logBuffer.append(
+                        "Customer runtime takeover update failed: \(error)"
+                    )
+                }
+            }
+        }
+        postTakeoverNotification(reason: reason)
+    }
+
+    private func postTakeoverNotification(reason: String) {
+        let control = AutomationControlGate.shared.status
+        UNUserNotificationCenter.current()
+            .removeDeliveredNotifications(
+                withIdentifiers: [Self.serverReadyNotifID]
+            )
+        sendNotification(
+            title: "客服助手已进入人工接管",
+            body: "自动点击、输入、切换 App 和发送已停止。"
+                + "\n状态：\(control.state.rawValue)"
+                + "\n原因：\(reason)"
+                + "\n长按通知可执行恢复前检查；恢复仍需再次确认。",
+            category: Self.takeoverActiveCategoryID,
+            identifier: Self.takeoverNotifID
+        )
+    }
+
+    private func requestResumeFromDevice() {
+        guard AutomationControlGate.shared.isBlocked else {
+            Self.logBuffer.append(
+                "Resume preflight ignored: automation is already allowed"
+            )
+            return
+        }
+        guard let runtime = customerServiceRuntime else {
+            Self.logBuffer.append(
+                "Resume preflight unavailable: customer runtime is not running"
+            )
+            return
+        }
+        Task {
+            do {
+                let detail = try await runtime.requestManualResume()
+                DispatchQueue.main.async { [weak self] in
+                    self?.sendNotification(
+                        title: "恢复前检查完成",
+                        body: detail
+                            + "\n自动化仍在锁定中。请核对页面、客户和发送状态后，再点确认恢复。",
+                        category: Self.resumeConfirmCategoryID,
+                        identifier: Self.resumeConfirmNotifID
+                    )
+                }
+            } catch {
+                Self.logBuffer.append(
+                    "Resume preflight failed: \(error)"
+                )
+            }
+        }
+    }
+
+    private func confirmResumeFromDevice() async {
+        guard let runtime = customerServiceRuntime else {
+            Self.logBuffer.append(
+                "Resume confirmation failed: customer runtime is not running"
+            )
+            return
+        }
+        do {
+            let detail = try await runtime
+                .confirmAutomaticResumeAfterPreflight()
+            Self.logBuffer.append("✅ \(detail)")
+            DispatchQueue.main.async { [weak self] in
+                UNUserNotificationCenter.current()
+                    .removeDeliveredNotifications(
+                        withIdentifiers: [
+                            Self.takeoverNotifID,
+                            Self.resumeConfirmNotifID,
+                        ]
+                    )
+                self?.postStatusNotification(
+                    title: "客服自动化已恢复",
+                    detail: detail
+                )
+            }
+        } catch {
+            Self.logBuffer.append(
+                "Resume confirmation refused: \(error)"
+            )
+            postTakeoverNotification(
+                reason: "恢复确认未通过：\(error)"
+            )
+        }
     }
 
     /// Turn nearby discovery on or off. Only possible while remote access is on.

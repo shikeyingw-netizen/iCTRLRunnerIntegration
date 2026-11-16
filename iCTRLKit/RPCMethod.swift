@@ -17,6 +17,15 @@ struct RPCMethodDef: Encodable {
 struct RPCMethodRegistry {
     static let methods: [RPCMethodDef] = [
         RPCMethodDef(
+            name: "automation_control",
+            description: "Persistent fail-closed automation lock. action=status reads the SQLite-backed state; takeover/stop immediately blocks every automatic tap, swipe, type, app switch and send, including requests already queued behind UI work. pause enters the paused state. request_resume is accepted only from this iPhone and performs recovery preflight, but never resumes by itself. Resume confirmation is deliberately unavailable over RPC and requires the authenticated on-device notification action.",
+            params: [
+                RPCParamDef(name: "action", type: "string", required: false, description: "status (default), takeover, stop, pause, or request_resume (local device only)"),
+                RPCParamDef(name: "reason", type: "string", required: false, description: "Short audit reason; no customer PII"),
+            ],
+            returns: "{state, generation, updated_at, actor, reason, phone_control:'blocked'|'allowed'}"
+        ),
+        RPCMethodDef(
             name: "config",
             description: "Read or update server settings and manage authorized sessions. With no params: returns current config plus the list of authorized sessions (client name, masked token prefix, granted/expiry times). Pass allow_remote_access and/or listen_port to change settings (persisted; server restarts, dropping the connection — reconnect at the returned address). Pass revoke_session_id to remove one session, or clear_sessions=true to revoke ALL tokens (including your own). Pass stop_server=true to SHUT DOWN the service (stops listening after replying; re-launch the runner to restart — tokens are preserved so no re-auth is needed).",
             params: [
@@ -421,6 +430,7 @@ struct RPCMethodRegistry {
         "cli_binary",          // GET /skill/clients/cli — static aarch64-musl client
         "nearby_discovery",    // Bonjour over peer-to-peer Wi-Fi (AWDL) on port+1, when turned on
         "drag_path",           // drag{points:[{x,y},...]} — one finger through waypoints, no lift at corners
+        "persistent_automation_lock", // SQLite fail-closed human-takeover control
     ]
 
     static func generateSchemaDocument() -> [String: Any] {

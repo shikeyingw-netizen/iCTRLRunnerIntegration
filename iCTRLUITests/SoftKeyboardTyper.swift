@@ -33,7 +33,8 @@ final class SoftKeyboardTyper {
 
     private let bundleId: String
     /// Taps the points in order, as one gesture record.
-    private let tapAll: ([CGPoint]) -> Void
+    private let tapAll: ([CGPoint]) -> Bool
+    private let canContinue: () -> Bool
     private let log: (String) -> Void
     /// Wait after a tap before reading the keyboard again.
     private static let tapGap: useconds_t = 120_000
@@ -42,9 +43,15 @@ final class SoftKeyboardTyper {
     /// an input method, say).
     private(set) var notes: [String] = []
 
-    init(bundleId: String, tapAll: @escaping ([CGPoint]) -> Void, log: @escaping (String) -> Void) {
+    init(
+        bundleId: String,
+        tapAll: @escaping ([CGPoint]) -> Bool,
+        canContinue: @escaping () -> Bool = { true },
+        log: @escaping (String) -> Void
+    ) {
         self.bundleId = bundleId
         self.tapAll = tapAll
+        self.canContinue = canContinue
         self.log = log
     }
 
@@ -178,12 +185,23 @@ final class SoftKeyboardTyper {
     /// Tap these keys in order. Refuses any that would act on the field (see
     /// isSubmitKey): typing must never send.
     private func press(_ keys: [Key], typed: String) throws {
+        guard canContinue() else {
+            throw Failure(
+                message: "Stopped by manual takeover. No further keys were pressed.",
+                typed: typed
+            )
+        }
         if let bad = keys.first(where: Self.isSubmitKey) {
             throw Failure(message: "Stopped before pressing \"\(bad.label)\": it would submit the field (send, search, go).",
                           typed: typed)
         }
         guard !keys.isEmpty else { return }
-        tapAll(keys.map(\.center))
+        guard tapAll(keys.map(\.center)) else {
+            throw Failure(
+                message: "Stopped by manual takeover while tapping the keyboard.",
+                typed: typed
+            )
+        }
         usleep(Self.tapGap)
     }
 
@@ -223,6 +241,12 @@ final class SoftKeyboardTyper {
     /// Type `text`, returning what was typed. Throws with the part that made
     /// it in when a character can't be produced.
     func type(_ text: String) throws -> String {
+        guard canContinue() else {
+            throw Failure(
+                message: "Stopped by manual takeover before typing.",
+                typed: ""
+            )
+        }
         var keys = readKeys()
         guard Self.isKeyboard(keys) else {
             throw Failure(message: "No on-screen keyboard with readable keys.", typed: "")
@@ -231,6 +255,12 @@ final class SoftKeyboardTyper {
         var typed = ""
         var i = text.startIndex
         while i < text.endIndex {
+            guard canContinue() else {
+                throw Failure(
+                    message: "Stopped by manual takeover during typing.",
+                    typed: typed
+                )
+            }
             let c = text[i]
             if Self.isHan(c) {
                 var j = i
@@ -324,7 +354,12 @@ final class SoftKeyboardTyper {
             throw Failure(message: "Letters are waiting in the input method's composition and there is no key known "
                           + "to commit them without sending.", typed: typed)
         }
-        tapAll([k.center])   // deliberate: see above
+        guard canContinue(), tapAll([k.center]) else {
+            throw Failure(
+                message: "Stopped by manual takeover before committing the composition.",
+                typed: typed
+            )
+        }
         usleep(Self.tapGap)
         keys = readKeys()
     }

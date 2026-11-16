@@ -36,6 +36,7 @@ final class RunnerAppUIBridge: AppUIBridge, @unchecked Sendable {
     }
 
     func launch(bundleID: String) async throws {
+        try ensurePhoneControlAllowed("launch_app")
         _ = try await dispatch(
             "launch_app",
             ["bundle_id": .string(bundleID)]
@@ -43,6 +44,7 @@ final class RunnerAppUIBridge: AppUIBridge, @unchecked Sendable {
     }
 
     func home() async throws {
+        try ensurePhoneControlAllowed("home")
         _ = try await dispatch("home", [:])
     }
 
@@ -126,6 +128,7 @@ final class RunnerAppUIBridge: AppUIBridge, @unchecked Sendable {
     }
 
     func tap(x: Double, y: Double) async throws {
+        try ensurePhoneControlAllowed("tap")
         _ = try await dispatch(
             "tap",
             [
@@ -143,6 +146,7 @@ final class RunnerAppUIBridge: AppUIBridge, @unchecked Sendable {
         y: Double,
         clear: Bool
     ) async throws {
+        try ensurePhoneControlAllowed("type")
         _ = try await dispatch(
             "type",
             [
@@ -159,6 +163,7 @@ final class RunnerAppUIBridge: AppUIBridge, @unchecked Sendable {
         x: Double,
         y: Double
     ) async throws {
+        try ensurePhoneControlAllowed("type")
         _ = try await dispatch(
             "type",
             [
@@ -176,6 +181,7 @@ final class RunnerAppUIBridge: AppUIBridge, @unchecked Sendable {
         x: Double,
         y: Double
     ) async throws {
+        try ensurePhoneControlAllowed("paste_text")
         _ = try await dispatch(
             "paste_text",
             [
@@ -197,6 +203,14 @@ final class RunnerAppUIBridge: AppUIBridge, @unchecked Sendable {
 
     func now() -> Date {
         clock()
+    }
+
+    private func ensurePhoneControlAllowed(_ method: String) throws {
+        guard !AutomationControlGate.shared.isBlocked else {
+            throw RunnerCustomerServiceError.rpc(
+                AutomationControlGate.shared.blockMessage(method: method)
+            )
+        }
     }
 
     private func dispatch(
@@ -374,8 +388,15 @@ actor RunnerCustomerServiceRuntime {
     func start() async throws -> QueueRecoveryReport {
         let recovery = try await scheduler.recoverAfterRestart()
         try await takeover.restore()
-        let paused = await takeover.isAutomationPaused
+        let takeoverPaused = await takeover.isAutomationPaused
+        let paused = takeoverPaused || AutomationControlGate.shared.isBlocked
         await scheduler.setAutomaticRepliesPaused(paused)
+        AutomationControlGate.shared.setStateChangeHandler { [weak self] record in
+            guard let self else { return }
+            Task {
+                await self.applyAutomationControl(record)
+            }
+        }
         running = true
         let observer = RunnerCommerceMessageObserver(bridge: bridge)
         messageObserver = observer
@@ -427,11 +448,84 @@ actor RunnerCustomerServiceRuntime {
 
     func setAutomaticRepliesPaused(_ paused: Bool) async throws {
         if paused {
-            try await takeover.pauseAllAutomaticReplies()
+            _ = try AutomationControlGate.shared.pauseAutomation(
+                reason: "Paused by local control",
+                actor: "user"
+            )
         } else {
+            guard !AutomationControlGate.shared.isBlocked else {
+                throw RunnerCustomerServiceError.rpc(
+                    "Automatic replies cannot resume until the on-device "
+                        + "manual-takeover approval flow completes."
+                )
+            }
             try await takeover.resumeAutomaticReplies()
         }
         await scheduler.setAutomaticRepliesPaused(paused)
+    }
+
+    func engageHumanTakeover(reason: String) async throws {
+        _ = try AutomationControlGate.shared.engageHumanTakeover(
+            reason: reason,
+            actor: "user"
+        )
+        await scheduler.setAutomaticRepliesPaused(true)
+        try await takeover.pauseAllAutomaticReplies()
+        iCTRLUITests.logBuffer.append(
+            "🛑 Human takeover engaged; scheduler and phone-control gate locked"
+        )
+    }
+
+    func requestManualResume() async throws -> String {
+        await scheduler.setAutomaticRepliesPaused(true)
+        let recovery = try await scheduler.recoverAfterRestart()
+        let queuedEscalated = try await queue
+            .escalateQueuedToManualReview(
+                note: "Manual takeover preflight: re-verify before resume"
+            )
+        let metrics = try await queue.metrics()
+        _ = try AutomationControlGate.shared.requestManualResume(
+            reason: "User requested resume; awaiting explicit confirmation",
+            actor: "user"
+        )
+        try await takeover.pauseAllAutomaticReplies()
+        return "Recovered \(recovery.movedToManualReview) task(s) to manual "
+            + "review and \(recovery.markedSendUncertain) uncertain send(s). "
+            + "Escalated \(queuedEscalated) queued task(s). "
+            + "Queue total: \(metrics.total). Confirmation is still required."
+    }
+
+    func confirmAutomaticResumeAfterPreflight() async throws -> String {
+        guard AutomationControlGate.shared.status.state
+            == .awaitingManualResume
+        else {
+            throw RunnerCustomerServiceError.rpc(
+                "Resume confirmation is only valid after a manual-resume "
+                    + "preflight."
+            )
+        }
+        let recovery = try await scheduler.recoverAfterRestart()
+        let queuedEscalated = try await queue
+            .escalateQueuedToManualReview(
+                note: "Resume confirmation: stale backlog requires review"
+            )
+        let metrics = try await queue.metrics()
+        let record = try AutomationControlGate.shared
+            .confirmAutomaticAfterPreflight(
+                reason: "Explicit on-device confirmation after preflight",
+                actor: "user"
+            )
+        await scheduler.setAutomaticRepliesPaused(false)
+        try await takeover.resumeAutomaticReplies()
+        iCTRLUITests.logBuffer.append(
+            "✅ Automatic replies restored explicitly; "
+                + "generation=\(record.generation)"
+        )
+        return "Automation resumed after recovery: "
+            + "\(recovery.movedToManualReview) manual-review, "
+            + "\(recovery.markedSendUncertain) uncertain, "
+            + "\(queuedEscalated) queued escalated, "
+            + "\(metrics.total) queued total."
     }
 
     func pendingHumanTasks() async -> [TakeoverTask] {
@@ -503,6 +597,21 @@ actor RunnerCustomerServiceRuntime {
                     + "source=\(message.source.rawValue)"
             )
         }
+    }
+
+    private func applyAutomationControl(
+        _ record: AutomationControlRecord
+    ) async {
+        let blocked = record.state.blocksPhoneControl
+        await scheduler.setAutomaticRepliesPaused(blocked)
+        if blocked {
+            try? await takeover.pauseAllAutomaticReplies()
+        }
+        iCTRLUITests.logBuffer.append(
+            "🔐 Automation control state=\(record.state.rawValue) "
+                + "generation=\(record.generation) "
+                + "phone_control=\(blocked ? "blocked" : "allowed")"
+        )
     }
 
     private func normalizedIdentity(_ text: String) -> String {

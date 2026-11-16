@@ -389,6 +389,19 @@ class ActionHandler {
         "scroll_to_element", "scroll_to", "tap_element",
     ]
 
+    /// Methods that can mutate the phone or another app. While the persistent
+    /// manual-takeover lock is present these are refused before any XCUITest
+    /// call, including calls issued by the local scheduler.
+    private static let phoneControlMethods: Set<String> = [
+        "tap", "double_tap", "long_press", "swipe", "scroll", "drag",
+        "page", "page_down", "page_up", "collect",
+        "scroll_to_element", "scroll_to", "tap_element", "find_and_tap",
+        "type", "clear_text", "paste_text",
+        "launch_app", "activate_app", "terminate_app",
+        "home", "lock", "unlock", "open", "open_url",
+        "press_button",
+    ]
+
     /// XCUIApplication.State raw values (see ForegroundApp.appStateForBundleID).
     private enum AppState: Int {
         case unknown = 0, notRunning = 1, backgroundSuspended = 2
@@ -420,6 +433,22 @@ class ActionHandler {
 
     func dispatch(method: String, params: [String: JSONValue]?) -> ([String: JSONValue]?, JSONRPCError?) {
         let cmd = ActionCommand(method: method, params: params)
+        if Self.phoneControlMethods.contains(method),
+           AutomationControlGate.shared.isBlocked {
+            iCTRLUITests.logBuffer.append(
+                "🛑 \(method) refused by persistent manual-takeover lock"
+            )
+            return (
+                nil,
+                JSONRPCError(
+                    code: -32010,
+                    message: AutomationControlGate.shared.blockMessage(
+                        method: method
+                    ),
+                    data: nil
+                )
+            )
+        }
         readFrame = nil
         if let t = cmd.elementType, let raws = Self.typeFilterRaws(t), raws.isEmpty {
             return (nil, JSONRPCError(code: -32602, message:
@@ -1362,6 +1391,7 @@ class ActionHandler {
         // since every tap the client sends is computed against these numbers.
         let frame = pointSize
         let s = scale
+        let control = AutomationControlGate.shared.status
         let result: [String: JSONValue] = [
             "device_name": .string(device.name),
             "model": .string(device.model),
@@ -1378,6 +1408,19 @@ class ActionHandler {
             "build": .string(RPCMethodRegistry.buildTimestamp),
             "protocol_version": .int(RPCMethodRegistry.protocolVersion),
             "capabilities": .array(RPCMethodRegistry.capabilityTags.map { .string($0) }),
+            "automation_control": .object([
+                "state": .string(control.state.rawValue),
+                "generation": .int(control.generation),
+                "phone_control": .string(
+                    control.state.blocksPhoneControl
+                        ? "blocked"
+                        : "allowed"
+                ),
+                "updated_at": .double(
+                    control.updatedAt.timeIntervalSince1970
+                ),
+                "reason": .string(control.reason),
+            ]),
             // Lets a caller holding an older copy of the manual notice it. An
             // installed skill is a snapshot from whenever it was fetched and has
             // no other way to learn the device moved on underneath it, so the
@@ -1738,6 +1781,9 @@ class ActionHandler {
             lastTapTarget = (label, refStore[refId]?.bundleId ?? resolveForegroundBundleId() ?? "", nowMonotonic)
             let r = fastHandler.fastTap(x: cx, y: cy)
             if r.1 != nil {
+                if AutomationControlGate.shared.isBlocked {
+                    return r
+                }
                 // Fallback to element tap only if the synthesized tap failed.
                 el!.tap()
             }
@@ -2173,6 +2219,15 @@ class ActionHandler {
         var focusedByTap = false
         if let x = cmd.x, let y = cmd.y {
             if let err = validateCoordinate(x: x, y: y, context: "type focus tap") { return (nil, err) }
+            if AutomationControlGate.shared.isBlocked {
+                return (nil, JSONRPCError(
+                    code: -32010,
+                    message: AutomationControlGate.shared.blockMessage(
+                        method: "type focus tap"
+                    ),
+                    data: nil
+                ))
+            }
             let normalized = app.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
             let coordinate = normalized.withOffset(CGVector(dx: x, dy: y))
             coordinate.tap()
@@ -2246,13 +2301,32 @@ class ActionHandler {
         // field let go of focus when the key events came (see below).
         let keyboardBefore = !text.isEmpty && keyboardUp()
 
-        let eventRecord = XCSynthesizedEventRecord(name: "Type")
-        let eventPath = XCPointerEventPath(forTextInput: ())
-        eventPath.typeText(text, atOffset: 0.0, typingSpeed: 60, shouldRedact: false)
-        eventRecord.add(eventPath)
-
         do {
-            try eventRecord.synthesize()
+            // A single XCUITest event cannot be cancelled once submitted.
+            // Small chunks create a cancellation boundary every few
+            // characters so a manual takeover stops before the rest of the
+            // reply is typed.
+            for chunk in text.chunksForAutomation(maximumCount: 6) {
+                guard !AutomationControlGate.shared.isBlocked else {
+                    return (nil, JSONRPCError(
+                        code: -32010,
+                        message: AutomationControlGate.shared.blockMessage(
+                            method: "type"
+                        ),
+                        data: nil
+                    ))
+                }
+                let eventRecord = XCSynthesizedEventRecord(name: "Type")
+                let eventPath = XCPointerEventPath(forTextInput: ())
+                eventPath.typeText(
+                    chunk,
+                    atOffset: 0.0,
+                    typingSpeed: 60,
+                    shouldRedact: false
+                )
+                eventRecord.add(eventPath)
+                try eventRecord.synthesize()
+            }
             // The text goes in through a virtual hardware keyboard, which
             // minimizes the on-screen one for a moment. A normal field keeps
             // focus and the keyboard comes back; some custom input bars (the
@@ -2331,6 +2405,12 @@ class ActionHandler {
         var sent = false
         var raised: String?
         let performPaste = {
+            guard !AutomationControlGate.shared.isBlocked else {
+                raised = AutomationControlGate.shared.blockMessage(
+                    method: "paste_text"
+                )
+                return
+            }
             raised = ObjCException.catching {
                 UIPasteboard.general.string = text
                 element.typeKey("v", modifierFlags: .command)
@@ -2407,7 +2487,12 @@ class ActionHandler {
             return (nil, JSONRPCError(code: -32603, message: "Typing failed: no foreground app.", data: nil))
         }
         let typer = SoftKeyboardTyper(bundleId: bid,
-                                      tapAll: { [fastHandler] in _ = fastHandler.tapSequence($0) },
+                                      tapAll: { [fastHandler] in
+                                          fastHandler.tapSequence($0)
+                                      },
+                                      canContinue: {
+                                          !AutomationControlGate.shared.isBlocked
+                                      },
                                       log: { iCTRLUITests.logBuffer.append($0) })
         if let p = refocusAt {
             _ = fastHandler.fastTap(x: p.x, y: p.y)
@@ -2448,6 +2533,12 @@ class ActionHandler {
 
     /// Synthesize a Return/Enter keystroke (triggers Search/Go/Send on the field).
     private func sendReturnKey() {
+        guard !AutomationControlGate.shared.isBlocked else {
+            iCTRLUITests.logBuffer.append(
+                "🛑 Return/Send keystroke stopped by manual takeover"
+            )
+            return
+        }
         let record = XCSynthesizedEventRecord(name: "Return")
         let path = XCPointerEventPath(forTextInput: ())
         path.typeText("\n", atOffset: 0.0, typingSpeed: 60, shouldRedact: false)
@@ -2516,6 +2607,12 @@ class ActionHandler {
         // slack this time, and a forward-delete run to catch anything sitting
         // to the RIGHT of the caret.
         func send(_ keys: String) {
+            guard !AutomationControlGate.shared.isBlocked else {
+                iCTRLUITests.logBuffer.append(
+                    "🛑 clear-text keystrokes stopped by manual takeover"
+                )
+                return
+            }
             let record = XCSynthesizedEventRecord(name: "ClearText")
             let path = XCPointerEventPath(forTextInput: ())
             path.typeText(keys, atOffset: 0.0, typingSpeed: 90, shouldRedact: false)
@@ -2549,6 +2646,9 @@ class ActionHandler {
     /// keystroke threw — callers then need a fallback, since a false negative
     /// here means the field is still full.
     private func selectAllInFocusedField() -> Bool {
+        guard !AutomationControlGate.shared.isBlocked else {
+            return false
+        }
         guard let bid = resolveForegroundBundleId() else { return false }
         let target = XCUIApplication(bundleIdentifier: bid)
         // One query over every text-input type (one walk, not one per type).
@@ -7841,6 +7941,9 @@ class ActionHandler {
         if cmd.bundleId != "com.apple.springboard", let err = alertRaisedBeforeTouch() { return (nil, err) }
         tapTargetFrame = f
         let synth = fastHandler.fastTap(x: cx, y: cy)
+        if AutomationControlGate.shared.isBlocked {
+            return synth
+        }
         let usedNative = synth.1 != nil
         if usedNative { element.tap() }
         tail.append("tap=\(Int((nowMonotonic - ts) * 1000))ms\(usedNative ? "(native)" : "")")
@@ -7898,7 +8001,12 @@ class ActionHandler {
         if cmd.bundleId != "com.apple.springboard", let err = alertRaisedBeforeTouch() { return (nil, err) }
         tapTargetFrame = f
         let r = fastHandler.fastTap(x: tx, y: ty)
-        if r.1 != nil { element.tap() }   // fallback only if synthesized tap failed
+        if r.1 != nil {
+            if AutomationControlGate.shared.isBlocked {
+                return r
+            }
+            element.tap()   // fallback only if synthesized tap failed
+        }
         return (["message": .string("Tapped element '\(label.isEmpty ? elementId : label)' at (\(Int(tx)),\(Int(ty)))")], nil)
     }
 
@@ -7920,6 +8028,18 @@ class ActionHandler {
     // MARK: - Drag
 
     private func drag(_ cmd: ActionCommand) -> ([String: JSONValue]?, JSONRPCError?) {
+        guard !AutomationControlGate.shared.isBlocked else {
+            return (
+                nil,
+                JSONRPCError(
+                    code: -32010,
+                    message: AutomationControlGate.shared.blockMessage(
+                        method: "drag"
+                    ),
+                    data: nil
+                )
+            )
+        }
         if let params = cmd.dragPathParams {
             let (path, error) = ContinuousDragPath.parse(params) { point, index in
                 validateCoordinate(x: Double(point.x), y: Double(point.y), context: "drag point \(index)")

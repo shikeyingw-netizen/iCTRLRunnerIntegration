@@ -1,6 +1,23 @@
 import XCTest
 
 class FastActionHandler {
+    private func takeoverError(_ action: String)
+        -> ([String: JSONValue]?, JSONRPCError?)
+    {
+        let gate = AutomationControlGate.shared
+        iCTRLUITests.logBuffer.append(
+            "🛑 \(action) stopped at final control boundary"
+        )
+        return (
+            nil,
+            JSONRPCError(
+                code: -32010,
+                message: gate.blockMessage(method: action),
+                data: nil
+            )
+        )
+    }
+
     /// Where the last tap/press landed, for the settle check to watch that
     /// spot as well as the whole screen. Cleared per call by the dispatcher.
     var lastTouchPoint: CGPoint?
@@ -19,6 +36,12 @@ class FastActionHandler {
     /// to keep pointing at the field.
     func tapSequence(_ points: [CGPoint], gap: TimeInterval = 0.1) -> Bool {
         guard !points.isEmpty else { return true }
+        guard !AutomationControlGate.shared.isBlocked else {
+            iCTRLUITests.logBuffer.append(
+                "🛑 keyboard tap sequence stopped by manual takeover"
+            )
+            return false
+        }
         let record = XCSynthesizedEventRecord(name: "Key Taps")
         for (i, p) in points.enumerated() {
             let t = Double(i) * gap
@@ -31,6 +54,9 @@ class FastActionHandler {
     }
 
     func fastTap(x: Double, y: Double) -> ([String: JSONValue]?, JSONRPCError?) {
+        guard !AutomationControlGate.shared.isBlocked else {
+            return takeoverError("tap")
+        }
         lastTouchPoint = CGPoint(x: x, y: y)
         lastTap = (CGPoint(x: x, y: y), Date())
         let eventRecord = XCSynthesizedEventRecord(name: "Fast Tap")
@@ -67,6 +93,9 @@ class FastActionHandler {
     /// sleep plus two IPC hops — past the ~250ms system window, and TikTok read
     /// it as a single tap (the video paused instead of liking).
     func fastDoubleTap(x: Double, y: Double) -> ([String: JSONValue]?, JSONRPCError?) {
+        guard !AutomationControlGate.shared.isBlocked else {
+            return takeoverError("double_tap")
+        }
         lastTouchPoint = CGPoint(x: x, y: y)
         let eventRecord = XCSynthesizedEventRecord(name: "Fast Double Tap")
         let point = CGPoint(x: x, y: y)
@@ -89,6 +118,9 @@ class FastActionHandler {
     /// the touch down for `duration` before lifting, so it never pays the
     /// quiescence wait that XCUICoordinate.press(forDuration:) does.
     func fastLongPress(x: Double, y: Double, duration: Double) -> ([String: JSONValue]?, JSONRPCError?) {
+        guard !AutomationControlGate.shared.isBlocked else {
+            return takeoverError("long_press")
+        }
         lastTouchPoint = CGPoint(x: x, y: y)
         let eventRecord = XCSynthesizedEventRecord(name: "Fast Long Press")
         let point = CGPoint(x: x, y: y)
@@ -120,6 +152,9 @@ class FastActionHandler {
     /// stops where the drag ended — no momentum, whatever the drag speed.
     func fastSwipe(fromX: Double, fromY: Double, toX: Double, toY: Double, duration: Double = 0.3,
                    hold: Double = 0.05) -> ([String: JSONValue]?, JSONRPCError?) {
+        guard !AutomationControlGate.shared.isBlocked else {
+            return takeoverError("swipe")
+        }
         let eventRecord = XCSynthesizedEventRecord(name: "Fast Swipe")
         let startPoint = CGPoint(x: fromX, y: fromY)
         let endPoint = CGPoint(x: toX, y: toY)
@@ -151,6 +186,9 @@ class FastActionHandler {
     }
 
     func fastTypeText(_ text: String) -> ([String: JSONValue]?, JSONRPCError?) {
+        guard !AutomationControlGate.shared.isBlocked else {
+            return takeoverError("type")
+        }
         let eventRecord = XCSynthesizedEventRecord(name: "Fast Type")
         let eventPath = XCPointerEventPath(forTextInput: ())
         eventPath.typeText(text, atOffset: 0.0, typingSpeed: 60, shouldRedact: false)

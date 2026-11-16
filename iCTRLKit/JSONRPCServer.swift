@@ -36,6 +36,10 @@ class JSONRPCServer {
     /// frame grabber + VideoStreamer). The server stops managing this connection
     /// once handed off — the streamer keeps it alive and closes it on disconnect.
     var onVideoStream: ((NWConnection, _ fps: Double, _ quality: String, _ verbose: Bool) -> Void)?
+    /// Loopback-only emergency stop. Safe to act immediately because it can
+    /// only remove automation authority. A Home Screen Shortcut can open
+    /// http://127.0.0.1:8200/takeover with one tap.
+    var onEmergencyTakeoverRequest: ((String) -> Void)?
 
     /// Fired right after a UI-mutating JSON-RPC completes (tap, swipe, home, …)
     /// so the host can nudge the video pipeline to emit a keyframe immediately
@@ -574,6 +578,33 @@ class JSONRPCServer {
             sendHTTPData(connection: connection, status: 200,
                          headers: ["Cache-Control": "max-age=86400"],
                          contentType: "image/png", body: RemoteIcon.png)
+
+        case ("GET", "/takeover"):
+            guard isLoopback(connection) else {
+                sendHTTPResponse(
+                    connection: connection,
+                    status: 403,
+                    body: "Emergency takeover is accepted only on this iPhone."
+                )
+                return
+            }
+            onEmergencyTakeoverRequest?(
+                "One-tap local emergency takeover URL"
+            )
+            sendHTTPResponse(
+                connection: connection,
+                status: 200,
+                contentType: "text/html; charset=utf-8",
+                body: """
+                <!doctype html><meta name="viewport" content="width=device-width">
+                <title>Automation stopped</title>
+                <body style="font: -apple-system-body;padding:32px;background:#fff">
+                <h1>已进入人工接管</h1>
+                <p>自动点击、输入、切换 App 和发送均已停止。</p>
+                <p>只有在本机明确确认恢复后才能重新运行。</p>
+                </body>
+                """
+            )
 
         // Logs can carry sensitive context even redacted. They are GETs that a
         // browser issues directly, so they can't carry an envelope body — they
