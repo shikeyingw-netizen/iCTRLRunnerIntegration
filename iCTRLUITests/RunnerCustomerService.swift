@@ -340,6 +340,10 @@ actor EncryptedTakeoverStore: TakeoverStateStore {
 }
 
 actor RunnerCustomerServiceRuntime {
+    // Windows is the AI customer-service controller. The iPhone service is
+    // detection/queueing only; enabling phone control for Windows must never
+    // re-enable this local reply brain.
+    private let localAutomaticRepliesEnabled = false
     private let bridge: RunnerAppUIBridge
     private let queue: SQLiteTaskQueue
     private let scheduler: TaskScheduler
@@ -388,9 +392,10 @@ actor RunnerCustomerServiceRuntime {
     func start() async throws -> QueueRecoveryReport {
         let recovery = try await scheduler.recoverAfterRestart()
         try await takeover.restore()
-        let takeoverPaused = await takeover.isAutomationPaused
-        let paused = takeoverPaused || AutomationControlGate.shared.isBlocked
-        await scheduler.setAutomaticRepliesPaused(paused)
+        let paused = true
+        await scheduler.setAutomaticRepliesPaused(
+            paused || !localAutomaticRepliesEnabled
+        )
         AutomationControlGate.shared.setStateChangeHandler { [weak self] record in
             guard let self else { return }
             Task {
@@ -398,14 +403,7 @@ actor RunnerCustomerServiceRuntime {
             }
         }
         running = true
-        let observer = RunnerCommerceMessageObserver(bridge: bridge)
-        messageObserver = observer
-        await observer.start { [weak self] message in
-            guard let self else {
-                return
-            }
-            try await self.ingestObservedMessage(message)
-        }
+        startMessageObserverIfAllowed()
         return recovery
     }
 
@@ -448,6 +446,7 @@ actor RunnerCustomerServiceRuntime {
 
     func setAutomaticRepliesPaused(_ paused: Bool) async throws {
         if paused {
+            await stopMessageObserver()
             _ = try AutomationControlGate.shared.pauseAutomation(
                 reason: "Paused by local control",
                 actor: "user"
@@ -460,11 +459,15 @@ actor RunnerCustomerServiceRuntime {
                 )
             }
             try await takeover.resumeAutomaticReplies()
+            startMessageObserverIfAllowed()
         }
-        await scheduler.setAutomaticRepliesPaused(paused)
+        await scheduler.setAutomaticRepliesPaused(
+            paused || !localAutomaticRepliesEnabled
+        )
     }
 
     func engageHumanTakeover(reason: String) async throws {
+        await stopMessageObserver()
         _ = try AutomationControlGate.shared.engageHumanTakeover(
             reason: reason,
             actor: "user"
@@ -517,6 +520,7 @@ actor RunnerCustomerServiceRuntime {
             )
         await scheduler.setAutomaticRepliesPaused(false)
         try await takeover.resumeAutomaticReplies()
+        startMessageObserverIfAllowed()
         iCTRLUITests.logBuffer.append(
             "✅ Automatic replies restored explicitly; "
                 + "generation=\(record.generation)"
@@ -535,6 +539,12 @@ actor RunnerCustomerServiceRuntime {
     private func ingestObservedMessage(
         _ message: DetectedCommerceMessage
     ) async throws {
+        guard running, !AutomationControlGate.shared.isBlocked else {
+            iCTRLUITests.logBuffer.append(
+                "Commerce event dropped after manual takeover"
+            )
+            return
+        }
         let assessment = MerchantPolicy.assess(message.text)
         let payload = TaskPayload(
             notificationKey: message.notificationKey,
@@ -582,6 +592,14 @@ actor RunnerCustomerServiceRuntime {
                     + "detected_to_queue_ms="
                     + "\(Int(Date().timeIntervalSince(message.detectedAt) * 1000))"
             )
+            guard localAutomaticRepliesEnabled else {
+                iCTRLUITests.logBuffer.append(
+                    "Commerce task retained for Windows controller: "
+                        + "task=\(task.id.uuidString.prefix(8))"
+                )
+                observedRoutes.removeValue(forKey: task.idempotencyKey)
+                return
+            }
             _ = try await scheduler.processAvailable(
                 maximumTasks: 1,
                 leaseDuration: 90,
@@ -605,12 +623,46 @@ actor RunnerCustomerServiceRuntime {
         let blocked = record.state.blocksPhoneControl
         await scheduler.setAutomaticRepliesPaused(blocked)
         if blocked {
+            await stopMessageObserver()
             try? await takeover.pauseAllAutomaticReplies()
+        } else {
+            startMessageObserverIfAllowed()
         }
         iCTRLUITests.logBuffer.append(
             "🔐 Automation control state=\(record.state.rawValue) "
                 + "generation=\(record.generation) "
                 + "phone_control=\(blocked ? "blocked" : "allowed")"
+        )
+    }
+
+    private func startMessageObserverIfAllowed() {
+        guard
+            running,
+            messageObserver == nil,
+            !AutomationControlGate.shared.isBlocked
+        else {
+            return
+        }
+        let observer = RunnerCommerceMessageObserver(bridge: bridge)
+        messageObserver = observer
+        Task {
+            await observer.start { [weak self] message in
+                guard let self else {
+                    return
+                }
+                try await self.ingestObservedMessage(message)
+            }
+        }
+    }
+
+    private func stopMessageObserver() async {
+        guard let observer = messageObserver else {
+            return
+        }
+        await observer.stop()
+        messageObserver = nil
+        iCTRLUITests.logBuffer.append(
+            "Commerce observer stopped for manual takeover"
         )
     }
 
@@ -687,8 +739,17 @@ actor RunnerCustomerServiceRuntime {
         ) {
             generated = local
         } else {
+            let turnToken = "WB" + String(
+                UUID().uuidString
+                    .replacingOccurrences(of: "-", with: "")
+                    .prefix(12)
+            )
             let turn = try await deepSeek.runCustomerTurn(
-                prompt: DeepSeekPromptBuilder.prompt(for: conversation)
+                prompt: DeepSeekPromptBuilder.verifiedPrompt(
+                    for: conversation,
+                    turnToken: turnToken
+                ),
+                turnToken: turnToken
             )
             guard turn.success else {
                 await submitTakeoverTask(
